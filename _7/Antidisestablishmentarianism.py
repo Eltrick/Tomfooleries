@@ -138,12 +138,13 @@ def main() -> None:
                         FINALSHAPE += "C"
                     elif temp == "RGB":
                         FINALSHAPE += "W"
+            print(str(FINALSHAPE))
             print("FinalShpe: ")
-            print("-<" + FINALSHAPE[x][0] + ">-")
-            print(FINALSHAPE[x][1] + "   " + FINALSHAPE[x][2])
-            print("-<" + FINALSHAPE[x][3] + ">-")
-            print(FINALSHAPE[x][4] + "   " + FINALSHAPE[x][5])
-            print("-<" + FINALSHAPE[x][6] + ">-")
+            print("-<" + FINALSHAPE[0] + ">-")
+            print(FINALSHAPE[1] + "   " + FINALSHAPE[2])
+            print("-<" + FINALSHAPE[3] + ">-")
+            print(FINALSHAPE[4] + "   " + FINALSHAPE[5])
+            print("-<" + FINALSHAPE[6] + ">-")
             print("")
             print("Input this sequence of colours into the module and press Submit. The module should now solve. If it doesn't, you know who to contact and scream your lungs out. But it's also on you for using this solver blindly. - L.V.")
             exit()
