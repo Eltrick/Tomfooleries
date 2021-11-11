@@ -25,8 +25,7 @@ def main() -> None:
     print("Info: When shadowing or continuing from when the program restarted, it is possible to input the starting value of the part being shadowed and continue as normal.")
     initialValues = input("Input the initial values for each colour channel (RGB-order) separated by spaces (when the LED is Black): ").upper().split(" ")
     
-    
-    elif len(initialValues) == 1:
+    if len(initialValues) == 1:
         valuesText = ["", "", ""]
         invertedValuesText = ["", "", ""]
         for x in range(0, 7):
