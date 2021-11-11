@@ -25,24 +25,7 @@ def main() -> None:
     print("Info: When shadowing or continuing from when the program restarted, it is possible to input the starting value of the part being shadowed and continue as normal.")
     initialValues = input("Input the initial values for each colour channel (RGB-order) separated by spaces (when the LED is Black): ").upper().split(" ")
     
-    if displays[0].upper() == "STARTOVER":
-            print("-------------------------------------<INFO>-------------------------------------")
-            print("A full restart of the program has been requested, re-initialising...")
-            main()
-    elif displays[0].upper() == "REVERT":
-        reverting = True
-        if len(displays) == 2:
-            if int(displays[1]) > len(HISTORY):
-                print("You are trying to access the future, which is not allowed. Fuck you.")
-            elif int(displays[1]) == len(HISTORY):
-                print("You are already at the present. Why are you using the revert command to revert to the present?")
-            else:
-                print("Reverting to stage " + str(displays[1]) + "...")
-                for y in range(int(displays[1]), len(HISTORY) - 1):
-                    HISTORY.pop(len(HISTORY) - 1)
-                CURRENT = [HISTORY[len(HISTORY) - 1][0], HISTORY[len(HISTORY) - 1][1], HISTORY[len(HISTORY) - 1][2]]
-                print("Reverted successfully, values are now: R[R, G, B] = " + str(CURRENT))
-                stage = int(displays[1])
+    
     elif len(initialValues) == 1:
         valuesText = ["", "", ""]
         invertedValuesText = ["", "", ""]
@@ -96,6 +79,8 @@ def main() -> None:
     while not end:
         print("-------------------------------------<NEW_STAGE>-------------------------------------")
         displays = input("Enter each channel's displayed value in stage " + str(stage) + " in the same way the initial values were input, adding an extra color at the end for the LED (if there are no more stages, input 'END'): ").upper().split(" ")
+        
+        
         
         if displays[0].upper() == "END":
             print("-------------------------------------<FINAL>-------------------------------------")
@@ -163,45 +148,62 @@ def main() -> None:
             print("")
             print("Input this sequence of colours into the module and press Submit. The module should now solve. If it doesn't, you know who to contact and scream your lungs out. But it's also on you for using this solver blindly. - L.V.")
             exit()
-        
-        if len(displays) == 2:
+        if displays[0].upper() == "STARTOVER":
+                print("-------------------------------------<INFO>-------------------------------------")
+                print("A full restart of the program has been requested, re-initialising...")
+                main()
+        elif displays[0].upper() == "REVERT":
+            reverting = True
+            if len(displays) == 2:
+                if int(displays[1]) > len(HISTORY):
+                    print("You are trying to access the future, which is not allowed. Fuck you.")
+                elif int(displays[1]) == len(HISTORY):
+                    print("You are already at the present. Why are you using the revert command to revert to the present?")
+                else:
+                    print("Reverting to stage " + str(displays[1]) + "...")
+                    for y in range(int(displays[1]), len(HISTORY) - 1):
+                        HISTORY.pop(len(HISTORY) - 1)
+                    CURRENT = [HISTORY[len(HISTORY) - 1][0], HISTORY[len(HISTORY) - 1][1], HISTORY[len(HISTORY) - 1][2]]
+                    print("Reverted successfully, values are now: R[R, G, B] = " + str(CURRENT))
+                    stage = int(displays[1])
+        elif len(displays) == 2:
             infoValid = True
             function = displays[1]
             valuesText = ["", "", ""]
             invertedValuesText = ["", "", ""]
-            for x in range(0, 7):
-                if displays[0][x] in "RMYW":
-                    valuesText[0] += "-"
-                else:
-                    valuesText[0] += "X"
-                if displays[0][x] in "GCYW":
-                    valuesText[1] += "-"
-                else:
-                    valuesText[1] += "X"
-                if displays[0][x] in "BCMW":
-                    valuesText[2] += "-"
-                else:
-                    valuesText[2] += "X"
-            for y in range(0, 7):
-                if valuesText[0][y] == "-":
-                    invertedValuesText[0] += "X"
-                elif valuesText[0][y] == "X":
-                    invertedValuesText[0] += "-"
-                if valuesText[1][y] == "-":
-                    invertedValuesText[1] += "X"
-                elif valuesText[1][y] == "X":
-                    invertedValuesText[1] += "-"
-                if valuesText[2][y] == "-":
-                    invertedValuesText[2] += "X"
-                elif valuesText[2][y] == "X":
-                    invertedValuesText[2] += "-"
-            for z in range(0, 3):
-                if valuesText[z] in SHAPES:
-                    CHANNELS[z] = SHAPES.index(valuesText[z])
-                    isInverted[z] = False
-                elif invertedValuesText[z] in SHAPES:
-                    CHANNELS[z] = SHAPES.index(invertedValuesText[z])
-                    isInverted[z] = True
+        for x in range(0, 7):
+            if displays[0][x] in "RMYW":
+                valuesText[0] += "-"
+            else:
+                valuesText[0] += "X"
+            if displays[0][x] in "GCYW":
+                valuesText[1] += "-"
+            else:
+                valuesText[1] += "X"
+            if displays[0][x] in "BCMW":
+                valuesText[2] += "-"
+            else:
+                valuesText[2] += "X"
+        for y in range(0, 7):
+            if valuesText[0][y] == "-":
+                invertedValuesText[0] += "X"
+            elif valuesText[0][y] == "X":
+                invertedValuesText[0] += "-"
+            if valuesText[1][y] == "-":
+                invertedValuesText[1] += "X"
+            elif valuesText[1][y] == "X":
+                invertedValuesText[1] += "-"
+            if valuesText[2][y] == "-":
+                invertedValuesText[2] += "X"
+            elif valuesText[2][y] == "X":
+                invertedValuesText[2] += "-"
+        for z in range(0, 3):
+            if valuesText[z] in SHAPES:
+                CHANNELS[z] = SHAPES.index(valuesText[z])
+                isInverted[z] = False
+            elif invertedValuesText[z] in SHAPES:
+                CHANNELS[z] = SHAPES.index(invertedValuesText[z])
+                isInverted[z] = True
         elif len(displays) == 4:
             infoValid = True
             function = displays[3]
