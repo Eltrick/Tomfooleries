@@ -170,39 +170,39 @@ def main() -> None:
             function = displays[1]
             valuesText = ["", "", ""]
             invertedValuesText = ["", "", ""]
-        for x in range(0, 7):
-            if displays[0][x] in "RMYW":
-                valuesText[0] += "-"
-            else:
-                valuesText[0] += "X"
-            if displays[0][x] in "GCYW":
-                valuesText[1] += "-"
-            else:
-                valuesText[1] += "X"
-            if displays[0][x] in "BCMW":
-                valuesText[2] += "-"
-            else:
-                valuesText[2] += "X"
-        for y in range(0, 7):
-            if valuesText[0][y] == "-":
-                invertedValuesText[0] += "X"
-            elif valuesText[0][y] == "X":
-                invertedValuesText[0] += "-"
-            if valuesText[1][y] == "-":
-                invertedValuesText[1] += "X"
-            elif valuesText[1][y] == "X":
-                invertedValuesText[1] += "-"
-            if valuesText[2][y] == "-":
-                invertedValuesText[2] += "X"
-            elif valuesText[2][y] == "X":
-                invertedValuesText[2] += "-"
-        for z in range(0, 3):
-            if valuesText[z] in SHAPES:
-                CHANNELS[z] = SHAPES.index(valuesText[z])
-                isInverted[z] = False
-            elif invertedValuesText[z] in SHAPES:
-                CHANNELS[z] = SHAPES.index(invertedValuesText[z])
-                isInverted[z] = True
+            for x in range(0, 7):
+                if displays[0][x] in "RMYW":
+                    valuesText[0] += "-"
+                else:
+                    valuesText[0] += "X"
+                if displays[0][x] in "GCYW":
+                    valuesText[1] += "-"
+                else:
+                    valuesText[1] += "X"
+                if displays[0][x] in "BCMW":
+                    valuesText[2] += "-"
+                else:
+                    valuesText[2] += "X"
+            for y in range(0, 7):
+                if valuesText[0][y] == "-":
+                    invertedValuesText[0] += "X"
+                elif valuesText[0][y] == "X":
+                    invertedValuesText[0] += "-"
+                if valuesText[1][y] == "-":
+                    invertedValuesText[1] += "X"
+                elif valuesText[1][y] == "X":
+                    invertedValuesText[1] += "-"
+                if valuesText[2][y] == "-":
+                    invertedValuesText[2] += "X"
+                elif valuesText[2][y] == "X":
+                    invertedValuesText[2] += "-"
+            for z in range(0, 3):
+                if valuesText[z] in SHAPES:
+                    CHANNELS[z] = SHAPES.index(valuesText[z])
+                    isInverted[z] = False
+                elif invertedValuesText[z] in SHAPES:
+                    CHANNELS[z] = SHAPES.index(invertedValuesText[z])
+                    isInverted[z] = True
         elif len(displays) == 4:
             infoValid = True
             function = displays[3]
