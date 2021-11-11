@@ -138,7 +138,6 @@ def main() -> None:
                         FINALSHAPE += "C"
                     elif temp == "RGB":
                         FINALSHAPE += "W"
-            print(str(FINALSHAPE))
             print("FinalShpe: ")
             print("-<" + FINALSHAPE[0] + ">-")
             print(FINALSHAPE[1] + "   " + FINALSHAPE[2])
