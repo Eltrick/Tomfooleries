@@ -177,7 +177,7 @@ def infoValidator(stageInfo: list) -> bool:
         print("Therefore, the sum of all values are: " + str(finalSum))
         finalAnswer = math.floor(math.acos(finalSum)/math.pi * 180)
         print("And so, the Final Answer is: " + str(finalAnswer))
-        print("And that is The End! Congratulations! -Eltrick#3002")
+        print("And that is The End! Congratulations! - L.V.")
         exit();
     elif len(stageInfo) != 5:
         print("Expected five parameters.")

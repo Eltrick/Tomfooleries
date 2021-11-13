@@ -554,14 +554,14 @@ def stageCalculation(rule: int, stage: int, ButtonLayout: list, tempAns: str) ->
 def infoValidator(infoDump: list) -> bool:
     if infoDump[0] == "END":
         print("----------------------------------------<FINAL_PHASE>----------------------------------------")
-        print("The final sequence of colours to input into the module is: " + Final)
+        print("The final sequence of colours to input into the module to finish Simon off is: " + Final)
         finalButtonLayout = list(input("Enter the final button layout of the module, as you did for all the others: "))
         FinalTPCommand = ""
         for i in range(0, len(Final)):
             FinalTPCommand += str(finalButtonLayout.index(Final[i]) + 1)
             if i != len(Final) - 1:
                 FinalTPCommand += " "
-        print("As such, the finisher, the final TP command to finish off, is: " + FinalTPCommand)
+        print("As such, the finisher, the final TP command to finish Simon off, is: " + FinalTPCommand)
         print("I no longer have any use to you, do I? Goodbye then.")
         exit()
     if len(infoDump) != 3:

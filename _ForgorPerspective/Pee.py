@@ -79,7 +79,7 @@ def main() -> None:
         if infoDump[0] == "END":
             print("---------------------------------<FINAL>---------------------------------")
             print("The full answer is: " + Answer)
-            print("The End, I have no use for you anymore, goodbye.")
+            print("The End, I have no use for you anymore, goodbye. - L.V.")
             exit()
         
         MinutesRemaining = int(infoDump[0])

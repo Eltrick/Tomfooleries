@@ -64,7 +64,7 @@ def main() -> None:
                 plainText += Keys[i][b36.index(cipherText[i][j])]
             plainText += "\r\n";
         print("Plaintext: " + "\r\n" + plainText)
-    print("And that is it. Goodbye. - L.V.")
+    print("Spite is a good push for people to do anything, isn't it? Anyway, goodbye. - L.V.")
     
 if __name__ == '__main__':
     main()

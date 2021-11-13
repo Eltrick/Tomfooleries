@@ -27,6 +27,7 @@ def main() -> None:
     controlSequence = "["
     tpCommand = ""
     
+    # Hello Obvious, if you are reading this, it means that you have access to this github repository. You can now projectile vomit at the scripts I made.
     print("--------------------------------------<START_MODULE>--------------------------------------")
     
     stage = 0
@@ -160,7 +161,8 @@ def main() -> None:
     tpCommand = tpCommand.replace("-", "p")
     print("The Input Sequence is: " + controlSequence)
     print("As such, the TP command is: " + tpCommand)
-        
+    print("Goodbye, now you probably don't have any more use for me, do you?")
+    exit()
 
 if __name__ == "__main__":
     main()

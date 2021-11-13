@@ -49,6 +49,7 @@ def main() -> None:
     global allInputs
     global TrueOmegaForget
     
+    print("Welcome, my friend, to the solver for one of the modules that approximately 6 people know how to do.")
     TrueOmegaForget = (True if input("I regret to have to ask this, but are you doing TrueOmegaForget? (Y/N): ").upper() == "Y" else False)
     stage = 0
     
@@ -319,7 +320,7 @@ def infoValidator(stageInfo: list) -> bool:
                 tpCommand += " "
         print("All stages' button presses are: " + string)
         print("As such, the Toiler Paper command is: " + tpCommand)
-        print("That is all, goodbye. - L.V.")
+        print("You should now have enough notes from each stage to show as proof, don't you? Goodbye then, and see you, at some point in time. - L.V.")
         exit()
     if len(stageInfo) != 3 and not TrueOmegaForget:
         print("Expected three parameters. Try again.")
