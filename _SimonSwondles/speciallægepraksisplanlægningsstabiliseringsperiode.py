@@ -152,8 +152,11 @@ def main() -> None:
                 SolutionArray[:] = SolutionArray[5:] + SolutionArray[:5]
                 print("B is F, new answer is: " + "".join(SolutionArray))
         elif infoDump[0] == "END":
-            print("All six colours found! Solution: " + "".join(SolutionArray))
-            exit()
+            if coloursFound == 6:
+                print("All six colours found! Solution: " + "".join(SolutionArray))
+                exit()
+            else:
+                print("Cannot end here because you have only found " + str(coloursFound) + "/6 colours.")
         N += 1
     
 

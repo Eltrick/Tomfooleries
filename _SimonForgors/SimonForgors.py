@@ -38,6 +38,7 @@ def main() -> None:
     global Colours
     
     stage = 1
+    hcount = 1
     
     print("----------------------------------------<START_PHASE>----------------------------------------")
     print("Simon kinda forgor his colours, so you probably want to help him.")
@@ -59,12 +60,21 @@ def main() -> None:
     
     while True:
         print("-----------------------------------------<NEW_STAGE>-----------------------------------------")
+        print("Solved modules: " + str(hcount))
         tempAns = ""
         infoDump = input("Input the information shown on the module in stage " + str(stage) + " (or 'END' if there are no more stages): ").upper().split(" ")
         infoValid = infoValidator(infoDump)
         while not infoValid:
             infoDump = input("Input the information shown on the module in stage " + str(stage) + " (or 'END' if there are no more stages): ").upper().split(" ")
             infoValid = infoValidator(infoDump)
+        if infoDump[0] == "QSKIP":
+            print("Queue Skip occured! Incrementing solve count by 1.")
+            hcount += 1
+            print("Solved modules: " + str(hcount))
+            infoValid = False
+            while not infoValid:
+                infoDump = input("Input the information shown on the module in stage " + str(stage) + " (or 'END' if there are no more stages): ").upper().split(" ")
+                infoValid = infoValidator(infoDump)
         
         # Module Info
         LitLEDs = list(infoDump[0])
@@ -114,12 +124,12 @@ def main() -> None:
                             tempAns += "P"
                 else:
                     if ButtonLayout.index("P") < 5:
-                        if stage % 2 == 0:
+                        if hcount % 2 == 0:
                             tempAns += "W"
                         else:
                             tempAns += "R"
                     else:
-                        if stage % 2 == 1:
+                        if hcount % 2 == 1:
                             tempAns += "G"
                         else:
                             tempAns += "C"
@@ -160,12 +170,12 @@ def main() -> None:
                             tempAns += "I"
                 else:
                     if ButtonLayout.index("Y") < 5:
-                        if stage % 2 == 0:
+                        if hcount % 2 == 0:
                             tempAns += "W"
                         else:
                             tempAns += "R"
                     else:
-                        if stage % 2 == 1:
+                        if hcount % 2 == 1:
                             tempAns += "G"
                         else:
                             tempAns += "M"
@@ -206,12 +216,12 @@ def main() -> None:
                             tempAns += "Y"
                 else:
                     if ButtonLayout.index("W") < 5:
-                        if stage % 2 == 0:
+                        if hcount % 2 == 0:
                             tempAns += "C"
                         else:
                             tempAns += "G"
                     else:
-                        if stage % 2 == 1:
+                        if hcount % 2 == 1:
                             tempAns += "W"
                         else:
                             tempAns += "O"
@@ -252,12 +262,12 @@ def main() -> None:
                             tempAns += "C"
                 else:
                     if ButtonLayout.index("P") < 5:
-                        if stage % 2 == 0:
+                        if hcount % 2 == 0:
                             tempAns += "P"
                         else:
                             tempAns += "B"
                     else:
-                        if stage % 2 == 1:
+                        if hcount % 2 == 1:
                             tempAns += "I"
                         else:
                             tempAns += "W"
@@ -298,12 +308,12 @@ def main() -> None:
                             tempAns += "R"
                 else:
                     if ButtonLayout.index("Y") < 5:
-                        if stage % 2 == 0:
+                        if hcount % 2 == 0:
                             tempAns += "P"
                         else:
                             tempAns += "B"
                     else:
-                        if stage % 2 == 1:
+                        if hcount % 2 == 1:
                             tempAns += "I"
                         else:
                             tempAns += "Y"
@@ -314,7 +324,7 @@ def main() -> None:
             if i != len(tempAns) - 1:
                 TPCommand += " "
         print("As such, the TP Command is: " + TPCommand)
-        calculatedSequence = stageCalculation(stage, stage, ButtonLayout, tempAns)
+        calculatedSequence = stageCalculation(stage, stage, hcount, ButtonLayout, tempAns)
         print("Calculated Sequence for this stage is: " + calculatedSequence)
         CalculatedSequences.append(calculatedSequence)
         for i in range(0, len(calculatedSequence)):
@@ -322,8 +332,9 @@ def main() -> None:
         for i in range(0, len(LEDs)):
             LEDs[i] = False
         stage += 1
+        hcount += 1
 
-def stageCalculation(rule: int, stage: int, ButtonLayout: list, tempAns: str) -> str:
+def stageCalculation(rule: int, stage: int, hcount: int, ButtonLayout: list, tempAns: str) -> str:
     finalAns = ""
     if rule == 1:
         if len(indicators) == 0:
@@ -448,7 +459,7 @@ def stageCalculation(rule: int, stage: int, ButtonLayout: list, tempAns: str) ->
                 finalAns += ButtonLayout[(ButtonLayout.index(ans) - int(serialNumber[5])) % 10]
         elif LEDs[Colours.index("I")] == True:
             for ans in tempAns:
-                finalAns += ButtonLayout[(ButtonLayout.index(ans) + stage) % 10]
+                finalAns += ButtonLayout[(ButtonLayout.index(ans) + hcount) % 10]
         elif LEDs[Colours.index("G")] == True:
             for ans in tempAns:
                 finalAns += ButtonLayout[(ButtonLayout.index(ans) - batteryCount) % 10]
@@ -536,17 +547,17 @@ def stageCalculation(rule: int, stage: int, ButtonLayout: list, tempAns: str) ->
             for ans in tempAns:
                 finalAns += ButtonLayout[(ButtonLayout.index(ans) + 3) % 10]
         elif LEDs[Colours.index("Y")] == True:
-            finalAns = stageCalculation(11, stage, ButtonLayout, tempAns)
+            finalAns = stageCalculation(11, stage, hcount, ButtonLayout, tempAns)
         elif LEDs[Colours.index("I")] == True:
-            finalAns = stageCalculation(8, stage, ButtonLayout, tempAns)
+            finalAns = stageCalculation(8, stage, hcount, ButtonLayout, tempAns)
         elif LEDs[Colours.index("M")] == True:
-            finalAns = stageCalculation(6, stage, ButtonLayout, tempAns)
+            finalAns = stageCalculation(6, stage, hcount, ButtonLayout, tempAns)
         elif LEDs[Colours.index("R")] == True:
-            finalAns = stageCalculation(5, stage, ButtonLayout, tempAns)
+            finalAns = stageCalculation(5, stage, hcount, ButtonLayout, tempAns)
         elif LEDs[Colours.index("B")] == True:
-            finalAns = stageCalculation(7, stage, ButtonLayout, tempAns)
+            finalAns = stageCalculation(7, stage, hcount, ButtonLayout, tempAns)
         elif LEDs[Colours.index("G")] == True:
-            finalAns = stageCalculation(10, stage, ButtonLayout, tempAns)
+            finalAns = stageCalculation(10, stage, hcount, ButtonLayout, tempAns)
         else:
             finalAns = stageCalculation(4, stage, ButtonLayout, tempAns)
     return finalAns
@@ -564,6 +575,8 @@ def infoValidator(infoDump: list) -> bool:
         print("As such, the finisher, the final TP command to finish Simon off, is: " + FinalTPCommand)
         print("I no longer have any use to you, do I? Goodbye then.")
         exit()
+    if infoDump[0] == "QSKIP":
+        return True
     if len(infoDump) != 3:
         print("I expected three arguments, try again.")
         return False
