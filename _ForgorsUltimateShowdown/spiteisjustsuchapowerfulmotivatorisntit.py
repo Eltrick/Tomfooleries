@@ -12,6 +12,7 @@ def main() -> None:
     
     unencryptedString = list(input("Enter the top 12-digit number: "))
     unencryptedNumbers = [int(x) for x in unencryptedString]
+    print("Uh: " + str(unencryptedNumbers))
     supplementaryString = list(input("Enter the bottom 12-digit number: "))
     supplementaryNumbers = [int(x) for x in supplementaryString]
     thirdDigitBinary = [0, 1, 1, 2, 1, 2, 2, 3, 1, 2]
@@ -69,7 +70,7 @@ def main() -> None:
                 unencryptedNumbers.reverse()
             elif rule == "C":
                 unencryptedNumbers[0] = numArray[(numArray.index(unencryptedNumbers[0]) + 5) % 10]
-                unencryptedNumbers[9] = numArray[(numArray.index(unencryptedNumbers[9]) + 5) % 10]
+                unencryptedNumbers[11] = numArray[(numArray.index(unencryptedNumbers[11]) + 5) % 10]
             elif rule == "W":
                 unencryptedNumbers[2] = numArray[(numArray.index(unencryptedNumbers[2]) + 5) % 10]
                 unencryptedNumbers[1] = numArray[(numArray.index(unencryptedNumbers[1]) + 5) % 10]
@@ -367,7 +368,7 @@ def main() -> None:
             for j in range(0, 10):
                 unencryptedNumbers[positions[j]] = FINumbers[math.floor(j / 5)][j % 5]
         elif methods[i] == "AND":
-            names = ["AND", "OR", "XOR", "NAND", "NOR", "XNOR", "IMP_L", "IMP_R", "NOT"]
+            names = ["AND", "OR", "XOR", "NAND", "NOR", "XNOR", "R_ARR", "L_ARR", "NOT"]
             print("Possible names for gates are: " + ", ".join(names))
             sequence = input("Input the sequence of 12 logic gates: ").upper().split(" ")
             Not = [15, 14, 13, 12, 11, 10, 9, 8, 7, 6]
@@ -436,7 +437,6 @@ def main() -> None:
                         for k in range(0, 4):
                             resultNum += int(result[k]) * (2 ** (3 - k))
                         unencryptedNumbers[j] = resultNum
-                    print("#" + str(j + 1) + ": unenc = " + unenc + " ; suppl = " + suppl + " ; result = " + result)
                 if (j + 1) % 2 == 0:
                     unencryptedNumbers[j] %= 10
                 else:
