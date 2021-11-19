@@ -12,7 +12,6 @@ def main() -> None:
     
     unencryptedString = list(input("Enter the top 12-digit number: "))
     unencryptedNumbers = [int(x) for x in unencryptedString]
-    print("Uh: " + str(unencryptedNumbers))
     supplementaryString = list(input("Enter the bottom 12-digit number: "))
     supplementaryNumbers = [int(x) for x in supplementaryString]
     thirdDigitBinary = [0, 1, 1, 2, 1, 2, 2, 3, 1, 2]
