@@ -60,7 +60,7 @@ def main() -> None:
             rule = input("What is the colour rule? ").upper()
             if rule == "B":
                 unencryptedNumbers.reverse()
-            elif rule == "I":
+            elif rule == "P":
                 for j in range(0, len(unencryptedNumbers)):
                     unencryptedNumbers[j] = numArray[(numArray.index(unencryptedNumbers[j]) + 5) % 10]
             elif rule == "L":
@@ -418,7 +418,7 @@ def main() -> None:
                         for k in range(0, 4):
                             resultNum += int(result[k]) * (2 ** (3 - k))
                         unencryptedNumbers[j] = resultNum
-                    elif sequence[j] == "IMP_L":
+                    elif sequence[j] == "R_ARR":
                         for k in range(0, 4):
                             if unenc[k] == "1" and suppl[k] == "0":
                                 result += "0"
@@ -427,7 +427,7 @@ def main() -> None:
                         for k in range(0, 4):
                             resultNum += int(result[k]) * (2 ** (3 - k))
                         unencryptedNumbers[j] = resultNum
-                    elif sequence[j] == "IMP_R":
+                    elif sequence[j] == "L_ARR":
                         for k in range(0, 4):
                             if unenc[k] == "0" and suppl[k] == "1":
                                 result += "0"
