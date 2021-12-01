@@ -27,7 +27,7 @@ def setup():
     state[r][c] = color
     button = tk.Button(
       window,
-      width=8,
+      width=9,
       height=5,
       bg=COLORNAMES[color],
       activebackground=COLORNAMES[color],
@@ -43,7 +43,7 @@ def setup():
     bg="orange",
     activebackground="orange",
     fg="black",
-    text="CLOSE",
+    text="EXIT",
     font=font.Font(size=15),
     command=lambda: window.destroy()
   )  # Right of TR corner of board
@@ -72,7 +72,7 @@ def setup():
     bg="lime",
     activebackground="lime",
     fg="black",
-    text="SOLVE",
+    text="S2",
     font=font.Font(size=15),
     command=lambda: prepsolve()
   )  # Right of BR corner of board

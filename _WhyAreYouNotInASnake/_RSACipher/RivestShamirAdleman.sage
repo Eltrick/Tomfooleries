@@ -6,9 +6,11 @@ D = [int(x) for x in input("[D] = ").split(" ")]
 
 def GetPhiN(N):
     Factors = factor(N);
-    p1 = Factors[0];
-    p2 = Factors[1];
+    p1 = Factors[0][0];
+    p2 = Factors[1][0];
+    print("P1 = " + str(p1) + "; P2 = " + str(p2))
     phiN = ((p1 - 1) * (p2 - 1)) / gcd(p1 - 1, p2 - 1);
+    print("Phi(N) = " + str(phiN))
     return phiN
 
 def GetPrivateComponent(phiN, publicComponent):
@@ -37,10 +39,12 @@ def GetPrivateComponent(phiN, publicComponent):
 
 def Decrypt(N, publicComponent, D):
     phiN = GetPhiN(N);
+    word = ""
     privateComponent = GetPrivateComponent(phiN, publicComponent);
     for encryptedNumber in D:
         decryptedNumber = ((encryptedNumber ** privateComponent) % N) - 1;
-        print(alphabet[decryptedNumber]);
+        word += alphabet[decryptedNumber]
+    print("Decrypted Word: " + word)
     return;
 
 Decrypt(N, E, D)
