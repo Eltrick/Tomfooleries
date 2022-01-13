@@ -1,0 +1,9 @@
+{
+"UPDATE_ENDPOINT": "https://updates.goosemod.com/goosemod",
+"NEW_UPDATE_ENDPOINT": "https://updates.goosemod.com/goosemod/",
+"UPDATE_ENDPOINT": "https://updates.goosemod.com/goosemod",
+"NEW_UPDATE_ENDPOINT": "https://updates.goosemod.com/goosemod/",
+"BACKGROUND_COLOR": "#202225",
+"IS_MAXIMIZED": false,
+"IS_MINIMIZED": true
+}
