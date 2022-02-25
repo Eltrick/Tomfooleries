@@ -9,10 +9,12 @@ colours = ["black", "red", "green2", "blue"]
 grid = [[0] * 6 for i in range(8)]
 buttons = [[None] * 6 for i in range(8)]
 functionality = [None] * 3
+next = None
 
 def setup():
     global pointer
     global grid
+    global next
     # Main grid
     for i in range(48):
         r = i // 6
@@ -76,6 +78,8 @@ def alterSelectedState(newState):
         pointer = 0
     else:
         pointer = newState
+    next["bg"] = colours[pointer]
+    next["activebackground"] = colours[pointer]
 
 def iterateGrid():
     tempGrid = [[0] * 6 for i in range(8)]
@@ -97,16 +101,16 @@ def iterateGrid():
         counts[2] = occurences.count(2)
         counts[3] = occurences.count(3)
         distinct = list(set(counts))
-        print(counts)
-        print(distinct)
+        # print(counts)
+        # print(distinct)
         
-        print("currentState = " + str(grid[r][c]))
+        # print("currentState = " + str(grid[r][c]))
         winner = max(counts[1], counts[2], counts[3])
         whenThe = 0
         for j in range(3):
             if counts[j + 1] == winner:
                 whenThe += 1
-        print("countTies = " + str(whenThe))
+        # print("countTies = " + str(whenThe))
         
         if grid[r][c] == 0:
             if whenThe == 3 or counts[0] == 8:
@@ -120,16 +124,16 @@ def iterateGrid():
                     tempGrid[r][c] = 1
             else:
                 tempGrid[r][c] = counts.index(max(counts[1], counts[2], counts[3]))
-                print("TG = " + str(tempGrid[r][c]))
+                # print("TG = " + str(tempGrid[r][c]))
         else:
             currentState = grid[r][c]
             if (counts[bound(currentState - 1)] >= counts[bound(currentState + 1)]):
                 tempGrid[r][c] = currentState
-                print("TG = " + str(tempGrid[r][c]))
+                # print("TG = " + str(tempGrid[r][c]))
             else:
                 tempGrid[r][c] = bound(currentState + 1)
-                print("TG = " + str(tempGrid[r][c]))
-        print("")
+                # print("TG = " + str(tempGrid[r][c]))
+        # print("")
     for i in range(48):
         r = i // 6
         c = i % 6
