@@ -14,8 +14,8 @@ def setup():
     global pointer
     global grid
     # Main grid
-    for i in range(64):
-        r = i // 8
+    for i in range(48):
+        r = i // 6
         c = i % 6
         button = tk.Button(
             window,
@@ -78,50 +78,67 @@ def alterSelectedState(newState):
         pointer = newState
 
 def iterateGrid():
-    tempGrid = [[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]
-    for i in range(64):
+    tempGrid = [[0] * 6 for i in range(8)]
+    for i in range(48):
         occurences = []
-        r = i // 8
+        r = i // 6
         c = i % 6
-        occurences.append(grid[r-1][c-1])
-        occurences.append(grid[r-1][c])
-        occurences.append(grid[r-1][(c+1)%6])
-        occurences.append(grid[r][c-1])
+        occurences.append(grid[((r-1)+8)%8][((c-1)+6)%6])
+        occurences.append(grid[((r-1)+8)%8][c])
+        occurences.append(grid[((r-1)+8)%8][(c+1)%6])
+        occurences.append(grid[r][((c-1)+6)%6])
         occurences.append(grid[r][(c+1)%6])
-        occurences.append(grid[(r+1)%8][c-1])
+        occurences.append(grid[(r+1)%8][((c-1)+6)%6])
         occurences.append(grid[(r+1)%8][c])
         occurences.append(grid[(r+1)%8][(c+1)%6])
+        counts = [0, 0, 0, 0]
+        counts[1] = occurences.count(0)
+        counts[1] = occurences.count(1)
+        counts[2] = occurences.count(2)
+        counts[3] = occurences.count(3)
+        distinct = list(set(counts))
+        print(counts)
+        print(distinct)
+        
+        print("currentState = " + str(grid[r][c]))
+        winner = max(counts[1], counts[2], counts[3])
+        whenThe = 0
+        for j in range(3):
+            if counts[j + 1] == winner:
+                whenThe += 1
+        print("countTies = " + str(whenThe))
+        
         if grid[r][c] == 0:
-            if occurences.count(0) == 8 or (occurences.count(1) == occurences.count(2) and occurences.count(2) == occurences.count(3)):
+            if whenThe == 3 or counts[0] == 8:
                 tempGrid[r][c] = 0
-            elif (occurences.count(1) == occurences.count(2) and occurences.count(1) > 1) or (occurences.count(2) == occurences.count(3) and occurences.count(2) > 1) or (occurences.count(1) == occurences.count(3) and occurences.count(3) > 1):
-                if occurences.count(1) == occurences.count(2):
+            elif whenThe == 2:
+                if counts[1] == counts[2]:
                     tempGrid[r][c] = 2
-                elif occurences.count(2) == occurences.count(3):
+                elif counts[2] == counts[3]:
                     tempGrid[r][c] = 3
-                elif occurences.count(1) == occurences.count(3):
+                elif counts[3] == counts[1]:
                     tempGrid[r][c] = 1
             else:
-                count = [0, 0, 0]
-                count[0] = occurences.count(1)
-                count[1] = occurences.count(2)
-                count[2] = occurences.count(3)
-                tempGrid[r][c] = count.index(max(count))
+                tempGrid[r][c] = counts.index(max(counts[1], counts[2], counts[3]))
+                print("TG = " + str(tempGrid[r][c]))
         else:
             currentState = grid[r][c]
-            if occurences.count(bound(currentState - 1)) >= occurences.count(bound(currentState + 1)):
+            if (counts[bound(currentState - 1)] >= counts[bound(currentState + 1)]):
                 tempGrid[r][c] = currentState
+                print("TG = " + str(tempGrid[r][c]))
             else:
                 tempGrid[r][c] = bound(currentState + 1)
-    for i in range(64):
-        r = i // 8
+                print("TG = " + str(tempGrid[r][c]))
+        print("")
+    for i in range(48):
+        r = i // 6
         c = i % 6
         grid[r][c] = tempGrid[r][c]
     updateGrid()
 
 def updateGrid():
-    for i in range(64):
-        r = i // 8
+    for i in range(48):
+        r = i // 6
         c = i % 6
         buttons[r][c]["bg"] = colours[grid[r][c]]
         buttons[r][c]["activebackground"] = colours[grid[r][c]]
@@ -129,10 +146,8 @@ def updateGrid():
 def bound(val) -> int:
     if val == 0:
         val = 3
-    elif val == 4:
-        val = 1
-    else:
-        val = val
+    elif val > 3:
+        val = val % 3
     return val
 
 setup()
