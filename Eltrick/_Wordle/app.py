@@ -24,7 +24,7 @@ def initialize(mode="default", k=5):
         init_poss_words = read_words(k, "resources/sowpods5.txt")
 
     else:
-        init_cbw = "TARES"
+        init_cbw = "CRATE"
         init_to_check = read_words(k, "resources/full_set.txt")
         init_poss_words = read_words(k, "resources/full_set.txt")
 

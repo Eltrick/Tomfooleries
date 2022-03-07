@@ -45,10 +45,7 @@ Houses = [{
     }]
 
 def main() -> None:
-    global Gryffindor
-    global Hufflepuff
-    global Ravenclaw
-    global Slytherin
+    global Houses
     while True:
         score = 0
         moduleName = list(input("Input module key: ").upper())
