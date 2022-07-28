@@ -12,7 +12,7 @@ def main() -> None:
     SolutionArray = ["-", "-", "-", "-", "-", "-"]
     print("Welcome, I wish you the best of luck on your journey.")
     print("---------------------------------<INITIALISATION>----------------------------------")
-    print("Current Solution: " + "".join(SolutionArray) + " (obviously)")
+    print("Current Solution: " + "".join(SolutionArray) + " (ob3viously)")
     Constant = list(input("Input the Constant: "))
     N = 0
     coloursFound = 0
@@ -42,7 +42,7 @@ def main() -> None:
                     SolutionArray[i] = colourXor(SolutionArray[i], infoDump[1][i])
                 else:
                     if TrueResponse[i] == colourXor(Constant[i], "W"):
-                        SolutionArray[i] = colourXor(Constant[i], "W")
+                        SolutionArray[i] = colourXor(infoDump[0], infoDump[1][i])
                         coloursFound += 1
             print("After XOR'ing with the Output: " + "".join(SolutionArray))
             if RGBBool[0]:
@@ -72,49 +72,52 @@ def main() -> None:
                 SolutionArray[:] = SolutionArray[5:] + SolutionArray[:5]
                 print("B is F, new answer is: " + "".join(SolutionArray))
         elif len(infoDump[0]) == 6:
-            inputs = list(infoDump[0]).reverse()
-            TrueResponse = list(infoDump[1])
-            print("Reversing...")
+            inputs = list(infoDump[0])
+            ConstantCopy = ["", "", "", "", "", ""]
+            for i in range(0, len(ConstantCopy)):
+                ConstantCopy[i] = Constant[i]
+            print("Constant before modifications is: " + "".join(ConstantCopy))
             for i in range(0, len(inputs)):
                 if inputs[i] == "K":
-                    TrueResponse = list(infoDump[1]).reverse()
-                    print("Black gives: " + "".join(TrueResponse))
+                    ConstantCopy = ConstantCopy[::-1]
+                    print("K gives: " + "".join(ConstantCopy))
                 elif inputs[i] == "R":
-                    for j in range(0, len(TrueResponse)):
-                        TrueResponse[j] = invertR[ColourOrder.index(TrueResponse[j])]
-                    print("Red gives: " + "".join(TrueResponse))
+                    for j in range(0, len(ConstantCopy)):
+                        ConstantCopy[j] = colourXor(ConstantCopy[j], "R")
+                    print("R gives: " + "".join(ConstantCopy))
                 elif inputs[i] == "G":
-                    for j in range(0, len(TrueResponse)):
-                        TrueResponse[j] = invertG[ColourOrder.index(TrueResponse[j])]
-                    print("Green gives: " + "".join(TrueResponse))
+                    for j in range(0, len(ConstantCopy)):
+                        ConstantCopy[j] = colourXor(ConstantCopy[j], "G")
+                    print("G gives: " + "".join(ConstantCopy))
                 elif inputs[i] == "B":
-                    for j in range(0, len(TrueResponse)):
-                        TrueResponse[j] = invertB[ColourOrder.index(TrueResponse[j])]
-                    print("Blue gives: " + "".join(TrueResponse))
+                    for j in range(0, len(ConstantCopy)):
+                        ConstantCopy[j] = colourXor(ConstantCopy[j], "B")
+                    print("B gives: " + "".join(ConstantCopy))
                 elif inputs[i] == "C":
-                    TrueResponse[:] = TrueResponse[1:] + TrueResponse[:1]
-                    print("Cyan gives: " + "".join(TrueResponse))
+                    ConstantCopy[:] = ConstantCopy[1:] + ConstantCopy[:1]
+                    print("C gives: " + "".join(ConstantCopy))
                 elif inputs[i] == "M":
-                    TrueResponse[:] = TrueResponse[5:] + TrueResponse[:5]
-                    print("Magenta gives: " + "".join(TrueResponse))
+                    ConstantCopy[:] = ConstantCopy[-1:] + ConstantCopy[:-1]
+                    print("M gives: " + "".join(ConstantCopy))
                 elif inputs[i] == "Y":
-                    for j in range(0, len(TrueResponse)):
-                        TrueResponse[j] = colourXor(TrueResponse[j], "W")
-                    print("Yellow gives: " + "".join(TrueResponse))
+                    for j in range(0, len(ConstantCopy)):
+                        ConstantCopy[j] = colourXor(ConstantCopy[j], "W")
+                    print("Y gives: " + "".join(ConstantCopy))
                 elif inputs[i] == "W":
-                    temp = TrueResponse[2] + TrueResponse[1] + TrueResponse[0] + TrueResponse[5] + TrueResponse[4] + TrueResponse[3]
-                    TrueResponse = list(temp)
-                    print("White gives: " + "".join(TrueResponse))
-            for i in range(0, len(TrueResponse)):
-                TrueResponse[i] = colourXor(TrueResponse[i], infoDump[0][i])
-            print("After XOR'ing with inputs, the True Response is: " + "".join(TrueResponse))
+                    temp = ConstantCopy[2] + ConstantCopy[1] + ConstantCopy[0] + ConstantCopy[5] + ConstantCopy[4] + ConstantCopy[3]
+                    ConstantCopy = list(temp)
+                    print("W gives: " + "".join(ConstantCopy))
+            for i in range(0, len(ConstantCopy)):
+                ConstantCopy[i] = colourXor(ConstantCopy[i], infoDump[0][i])
+            print("After XORing with inputs gives: " + "".join(ConstantCopy))
             for i in range(0, len(SolutionArray)):
                 if SolutionArray[i] != "-":
                     SolutionArray[i] = colourXor(SolutionArray[i], infoDump[1][i])
                 elif SolutionArray[i] == "-":
-                    if TrueResponse[i] == colourXor(Constant[i], "W"):
-                        SolutionArray[i] = colourXor(Constant[i], "W")
+                    if infoDump[1][i] == colourXor(ConstantCopy[i], "W"):
+                        SolutionArray[i] = colourXor(infoDump[0][i], infoDump[1][i])
                         coloursFound += 1
+            print("After finding opposites, the new current answer is: " + "".join(SolutionArray))
             if infoDump[0][N % 6] in "RMYW":
                 RGBBool[0] = True
             else:
@@ -139,11 +142,13 @@ def main() -> None:
                 print("R is F, new answer is: " + "".join(SolutionArray))
             if RGBBool[1]:
                 for i in range(0, 3):
-                    SolutionArray[i] = colourXor(SolutionArray[i], "W")
+                    if SolutionArray[i] != "-":
+                        SolutionArray[i] = colourXor(SolutionArray[i], "W")
                 print("G is T, new answer is: " + "".join(SolutionArray))
             elif not RGBBool[1]:
                 for i in range(3, 6):
-                    SolutionArray[i] = colourXor(SolutionArray[i], "W")
+                    if SolutionArray[i] != "-":
+                        SolutionArray[i] = colourXor(SolutionArray[i], "W")
                 print("G is F, new answer is: " + "".join(SolutionArray))
             if RGBBool[2]:
                 SolutionArray[:] = SolutionArray[1:] + SolutionArray[:1]

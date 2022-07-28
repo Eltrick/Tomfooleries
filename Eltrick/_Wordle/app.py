@@ -22,7 +22,10 @@ def initialize(mode="default", k=5):
         init_cbw = "TARES"
         init_to_check = read_words(k, "resources/sowpods5.txt")
         init_poss_words = read_words(k, "resources/sowpods5.txt")
-
+    elif mode == "full":
+        init_cbw = "CRATE"
+        init_to_check = read_words(k, "resources/fangames.txt")
+        init_poss_words = read_words(k, "resources/fangames.txt")
     else:
         init_cbw = "CRATE"
         init_to_check = read_words(k, "resources/full_set.txt")

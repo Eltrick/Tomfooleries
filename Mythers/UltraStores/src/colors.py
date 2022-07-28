@@ -29,23 +29,35 @@ def order(stage_cols: list, cols: list, debug: bool) -> list:
     if cols[0] == "W":  # If top is white, reverse the sequence.
         stage_cols.reverse()
         if debug:
-            print("After rule #1: " + str(stage_cols))
+            print("Rule #1: Top button is White, reversing sequence: " + str(stage_cols))
+    else:
+        if debug:
+            print("Rule #!1: Top button is not White, nothing happens: " + str(stage_cols))
     if cols[1] == "Y":  # If top-right is yellow, cycle all 1 left.
         stage_cols = stage_cols[1:] + [stage_cols[0]]
         if debug:
-            print("After rule #2: " + str(stage_cols))
+            print("Rule #2: Top-right button is Yellow, cycling all 1 left: " + str(stage_cols))
+    else:
+        if debug:
+            print("Rule #!2: Top-right button is not Yellow, nothing happens: " + str(stage_cols))
     if abs(cols.index("W") - cols.index("K")) == 4:  # If white is opposite black...
         for i in range(0, 4):  # Swap each color with its opposite color on the module.
             if cols[i] != "W" and cols[i] != "K":  # For each color pair, if it's not...
                 swap(stage_cols, cols[i], cols[i + 4])  # W/K, then it can be swapped.
         if debug:
-            print("After rule #3: " + str(stage_cols))
+            print("Rule #3: White is opposite Black, swapping with opposites: " + str(stage_cols))
+    else:
+        if debug:
+            print("Rule #!3: White is not opposite Black. Nothing happens.")
     if abs(cols.index("R") - cols.index("C")) == 4:  # If red is opposite cyan...
         swap(stage_cols, "R", "C")  # Swap R and C, G and M, and B and Y.
         swap(stage_cols, "G", "M")
         swap(stage_cols, "B", "Y")  # If G and M have one button between them (6 for wraparound)...
         if debug:
-            print("After rule #4: " + str(stage_cols))
+            print("Rule #4: Red is opposite Cyan on module, swapping RC, GM, BY: " + str(stage_cols))
+    else:
+        if debug:
+            print("Rule #!4: Red is not opposite Cyan on module, nothing happens: " + str(stage_cols))
     if abs(cols.index("G") - cols.index("M")) == 2 or abs(cols.index("G") - cols.index("M")) == 6:
         # [Possible index pairs: 02, 13, 24, 35, 46, 57, 60, 71 (last two use 6, others use 2)]
         # Cycle the colors based on clockwise order of appearance on the module.
@@ -56,7 +68,7 @@ def order(stage_cols: list, cols: list, debug: bool) -> list:
         for i in range(1, 6):  # Example below
             swap(stage_cols, first, cw[i])
         if debug:
-            print("After rule #5: " + str(stage_cols))
+            print("Rule #5: G > any > M, cycling colours clockwise, module-wise: " + str(stage_cols))
         """
         Let stage_cols = R G B C M Y
         Let cw = R C Y M G B, so first = R
@@ -72,43 +84,70 @@ def order(stage_cols: list, cols: list, debug: bool) -> list:
         R->C, C->Y, Y->M, M->G, G->B, B->R (correct)
         """
     # (End of example) If G is adjacent to W (7 for wraparound), cycle the primary colors
+    else:
+        if debug:
+            print("Rule #!5: !(Green > any > Magenta), nothing happens: " + str(stage_cols))
     if abs(cols.index("G") - cols.index("W")) == 1 or abs(cols.index("G") - cols.index("W")) == 7:
         cycle_pri(stage_cols)  # If M is adjacent to K (7 for wraparound), cycle the secondary colors
         if debug:
-            print("After rule #6: " + str(stage_cols))
+            print("Rule #6 : Green adjacent to White, cycling primaries: " + str(stage_cols))
+    else:
+        if debug:
+            print("Rule #!6 : Green not adjacent to White, nothing happens: " + str(stage_cols))
     if abs(cols.index("M") - cols.index("K")) == 1 or abs(cols.index("M") - cols.index("K")) == 7:
         cycle_sec(stage_cols)  # If W is adjacent to K (7 for wraparound), cycle both of those sets
         if debug:
-            print("After rule #7: " + str(stage_cols))
+            print("Rule #7: Magenta adjacent to Black, cycling secondaries: " + str(stage_cols))
+    else:
+        if debug:
+            print("Rule #!7: Magenta not adjacent to Black, nothing happens: " + str(stage_cols))
     if abs(cols.index("W") - cols.index("K")) == 1 or abs(cols.index("W") - cols.index("K")) == 7:
         cycle_pri(stage_cols)  # Note: This stacks with earlier cycles
         cycle_sec(stage_cols)
         if debug:
-            print("After rule #8: " + str(stage_cols))
+            print("Rule #8: White adjacent to Black, cycling both primaries and secondaries: " + str(stage_cols))
+    else:
+        if debug:
+            print("Rule #!8: White not adjacent to Black, nothing happens: " + str(stage_cols))
     if (1 <= cols.index("B") <= 3 and 1 <= cols.index("Y") <= 3) or (  # If B and Y are both on the right...
             5 <= cols.index("B") <= 7 and 5 <= cols.index("Y") <= 7):  # or both on the left, swap B with...
         swap_int(stage_cols, stage_cols.index("B"), 5 - stage_cols.index("B"))  # its opposite in the list.
         if debug:
-            print("After rule #9: " + str(stage_cols))
+            print("Rule #9: Blue and Yellow on the same side, swapping B with opposite in sequence: " + str(stage_cols))
+    else:
+        if debug:
+            print("Rule #!9: Blue and Yellow not on the same side, nothing happens: " + str(stage_cols))
     if 1 <= cols.index("R") <= 3:  # If red is on the right...
         swap(stage_cols, "R", "Y")  # Swap red and yellow.
         if debug:
-            print("After rule #10: " + str(stage_cols))
+            print("Rule #10: Red on the right, swapping Red and Yellow: " + str(stage_cols))
+    else:
+        if debug:
+            print("Rule #!10: Red not on the right, nothing happens: " + str(stage_cols))
     if 5 <= cols.index("B") <= 7:  # If blue is on the left...
         swap(stage_cols, "G", "C")  # Swap green and cyan.
         if debug:
-            print("After rule #11: " + str(stage_cols))
+            print("Rule #11: Blue on the left, swapping Green and Cyan: " + str(stage_cols))
+    else:
+        if debug:
+            print("Rule #!11: Blue not on the left, nothing happens: " + str(stage_cols))
     offset_cols = cols[cols.index("W"):] + cols[:cols.index("W")]  # Offsets list so W is first
     if offset_cols.index("Y") > offset_cols.index("G"):  # If, from W, Y is further clockwise than G...
         swap_int(stage_cols, 0, 5)  # Swap the first and last colors in the list
         if debug:
-            print("After rule #12: " + str(stage_cols))
+            print("Rule #12: White to Yellow > White to Green, swapping first and last: " + str(stage_cols))
+    else:
+        if debug:
+            print("Rule #!12: White to Yellow <= White to Green, nothing happens: " + str(stage_cols))
     offset_cols = cols[cols.index("K"):] + cols[:cols.index("K")]  # Offsets list so K is first
     if offset_cols.index("B") > offset_cols.index("C"):  # If, from K, B is further clockwise than C...
         if cols[0] != "W" and cols[0] != "K" and cols[4] != "W" and cols[4] != "K":
             swap(stage_cols, cols[0], cols[4])  # Swap top and bottom (if neither are W/K)
         if debug:
-            print("After rule #13: " + str(stage_cols))
+            print("Rule #13: Black to Blue > Black to Cyan, swapping top and bottom mayhapsibly: " + str(stage_cols))
+    else:
+        if debug:
+            print("Rule #!13: Black to Blue <= Black to Cyan, nothing happens: " + str(stage_cols))
     return stage_cols  # Finally, return the list with swaps applied
 
 

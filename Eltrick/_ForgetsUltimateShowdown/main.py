@@ -79,137 +79,138 @@ def main() -> None:
             functionSequence = [int(x) for x in functionString]
             lastInput = 0
             secondLastInput = 0
+            results = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
             for j in range(0, len(unencryptedNumbers)):
                 if j == 0:
-                    lastInput = unencryptedNumbers[j]
-                    secondLastInput = unencryptedNumbers[j]
+                    lastInput = 0
+                    secondLastInput = 0
                 elif j == 1:
-                    lastInput = unencryptedNumbers[j - 1]
-                    secondLastInput = unencryptedNumbers[j]
+                    lastInput = results[j - 1]
                 else:
-                    lastInput = unencryptedNumbers[j - 1]
-                    secondLastInput = unencryptedNumbers[j - 2]
+                    lastInput = results[j - 1]
+                    secondLastInput = results[j - 2]
                 if functionSequence[j] == 0:
-                    unencryptedNumbers[j] += abs(supplementaryNumbers[j]) % 10
+                    results[j] += abs(unencryptedNumbers[j])
                 elif functionSequence[j] == 1:
-                    unencryptedNumbers[j] += abs(supplementaryNumbers[j] + 1) % 10
+                    results[j] += abs(unencryptedNumbers[j] + 1)
                 elif functionSequence[j] == 2:
-                    unencryptedNumbers[j] += abs((supplementaryNumbers[j] * 2)) % 10
+                    results[j] += abs((unencryptedNumbers[j] * 2))
                 elif functionSequence[j] == 3:
-                    unencryptedNumbers[j] += abs(supplementaryNumbers[j] + lastInput) % 10
+                    results[j] += abs(unencryptedNumbers[j] + lastInput)
                 elif functionSequence[j] == 4:
-                    unencryptedNumbers[j] += abs((lastInput - supplementaryNumbers[j])) % 10
+                    results[j] += abs((lastInput - unencryptedNumbers[j]))
                 elif functionSequence[j] == 5:
-                    unencryptedNumbers[j] += abs(lastInput - secondLastInput) % 10
+                    results[j] += abs(lastInput - secondLastInput)
                 elif functionSequence[j] == 6:
-                    unencryptedNumbers[j] += abs((secondLastInput - supplementaryNumbers[j])) % 10
+                    results[j] += abs((secondLastInput - unencryptedNumbers[j]))
                 elif functionSequence[j] == 7:
-                    unencryptedNumbers[j] += abs(supplementaryNumbers[j] + lastInput + 1) % 10
+                    results[j] += abs(unencryptedNumbers[j] + lastInput + 1)
                 elif functionSequence[j] == 8:
-                    unencryptedNumbers[j] += abs(supplementaryNumbers[j] + secondLastInput + 1) % 10
+                    results[j] += abs(unencryptedNumbers[j] + secondLastInput + 1)
                 elif functionSequence[j] == 9:
-                    unencryptedNumbers[j] += abs(lastInput + secondLastInput + 1) % 10
+                    results[j] += abs(lastInput + secondLastInput + 1)
                 elif functionSequence[j] == 10:
-                    unencryptedNumbers[j] += abs(lastInput) % 10
+                    results[j] += abs(lastInput)
                 elif functionSequence[j] == 11:
-                    unencryptedNumbers[j] += abs(lastInput + 1) % 10
+                    results[j] += abs(lastInput + 1)
                 elif functionSequence[j] == 12:
-                    unencryptedNumbers[j] += abs((lastInput * 2)) % 10
+                    results[j] += abs((lastInput * 2))
                 elif functionSequence[j] == 13:
-                    unencryptedNumbers[j] += abs(lastInput + secondLastInput) % 10
+                    results[j] += abs(lastInput + secondLastInput)
                 elif functionSequence[j] == 14:
-                    unencryptedNumbers[j] += abs(supplementaryNumbers[j] - 1) % 10
+                    results[j] += abs(unencryptedNumbers[j] - 1)
                 elif functionSequence[j] == 15:
-                    unencryptedNumbers[j] += abs(lastInput - 1) % 10
+                    results[j] += abs(lastInput - 1)
                 elif functionSequence[j] == 16:
-                    unencryptedNumbers[j] += abs(secondLastInput - 1) % 10
+                    results[j] += abs(secondLastInput - 1)
                 elif functionSequence[j] == 17:
-                    unencryptedNumbers[j] += abs(lastInput + supplementaryNumbers[j] - 1) % 10
+                    results[j] += abs(lastInput + unencryptedNumbers[j] - 1)
                 elif functionSequence[j] == 18:
-                    unencryptedNumbers[j] += abs(secondLastInput + supplementaryNumbers[j] - 1) % 10
+                    results[j] += abs(secondLastInput + unencryptedNumbers[j] - 1)
                 elif functionSequence[j] == 19:
-                    unencryptedNumbers[j] += abs(lastInput + secondLastInput - 1) % 10
+                    results[j] += abs(lastInput + secondLastInput - 1)
                 elif functionSequence[j] == 20:
-                    unencryptedNumbers[j] += abs(secondLastInput) % 10
+                    results[j] += abs(secondLastInput)
                 elif functionSequence[j] == 21:
-                    unencryptedNumbers[j] += abs(secondLastInput + 1) % 10
+                    results[j] += abs(secondLastInput + 1)
                 elif functionSequence[j] == 22:
-                    unencryptedNumbers[j] += abs((secondLastInput * 2)) % 10
+                    results[j] += abs((secondLastInput * 2))
                 elif functionSequence[j] == 23:
-                    unencryptedNumbers[j] += abs(secondLastInput + supplementaryNumbers[j]) % 10
+                    results[j] += abs(secondLastInput + unencryptedNumbers[j])
                 elif functionSequence[j] == 24:
-                    unencryptedNumbers[j] += abs((lastInput + secondLastInput) * 2) % 10
+                    results[j] += abs((lastInput + secondLastInput) * 2)
                 elif functionSequence[j] == 25:
-                    unencryptedNumbers[j] += abs((lastInput + supplementaryNumbers[j]) * 2) % 10
+                    results[j] += abs((lastInput + unencryptedNumbers[j]) * 2)
                 elif functionSequence[j] == 26:
-                    unencryptedNumbers[j] += abs((secondLastInput + supplementaryNumbers[j]) * 2) % 10
+                    results[j] += abs((secondLastInput + unencryptedNumbers[j]) * 2)
                 elif functionSequence[j] == 27:
-                    unencryptedNumbers[j] += abs(abs(lastInput - secondLastInput) * 2) % 10
+                    results[j] += abs(abs(lastInput - secondLastInput) * 2)
                 elif functionSequence[j] == 28:
-                    unencryptedNumbers[j] += abs(abs(lastInput - supplementaryNumbers[j]) * 2) % 10
+                    results[j] += abs(abs(lastInput - unencryptedNumbers[j]) * 2)
                 elif functionSequence[j] == 29:
-                    unencryptedNumbers[j] += abs(abs(secondLastInput - supplementaryNumbers[j]) * 2) % 10
+                    results[j] += abs(abs(secondLastInput - unencryptedNumbers[j]) * 2)
                 elif functionSequence[j] == 30:
-                    unencryptedNumbers[j] += abs(supplementaryNumbers[j] * 3) % 10
+                    results[j] += abs(unencryptedNumbers[j] * 3)
                 elif functionSequence[j] == 31:
-                    unencryptedNumbers[j] += abs(lastInput * 3) % 10
+                    results[j] += abs(lastInput * 3)
                 elif functionSequence[j] == 32:
-                    unencryptedNumbers[j] += abs(secondLastInput * 3) % 10
+                    results[j] += abs(secondLastInput * 3)
                 elif functionSequence[j] == 33:
-                    unencryptedNumbers[j] += abs((lastInput + secondLastInput) * 3) % 10
+                    results[j] += abs((lastInput + secondLastInput) * 3)
                 elif functionSequence[j] == 34:
-                    unencryptedNumbers[j] += abs(secondLastInput + (3 * lastInput)) % 10
+                    results[j] += abs(secondLastInput + (3 * lastInput))
                 elif functionSequence[j] == 35:
-                    unencryptedNumbers[j] += abs(lastInput + (3 * supplementaryNumbers[j])) % 10
+                    results[j] += abs(lastInput + (3 * unencryptedNumbers[j]))
                 elif functionSequence[j] == 36:
-                    unencryptedNumbers[j] += abs(secondLastInput + (3 * supplementaryNumbers[j])) % 10
+                    results[j] += abs(secondLastInput + (3 * unencryptedNumbers[j]))
                 elif functionSequence[j] == 37:
-                    unencryptedNumbers[j] += abs(supplementaryNumbers[j] + (3 * lastInput)) % 10
+                    results[j] += abs(unencryptedNumbers[j] + (3 * lastInput))
                 elif functionSequence[j] == 38:
-                    unencryptedNumbers[j] += abs(supplementaryNumbers[j] + (3 * secondLastInput)) % 10
+                    results[j] += abs(unencryptedNumbers[j] + (3 * secondLastInput))
                 elif functionSequence[j] == 39:
-                    unencryptedNumbers[j] += abs(lastInput + (3 * secondLastInput)) % 10
+                    results[j] += abs(lastInput + (3 * secondLastInput))
                 elif functionSequence[j] == 40:
-                    unencryptedNumbers[j] += abs(5 + supplementaryNumbers[j]) % 10
+                    results[j] += abs(5 + unencryptedNumbers[j])
                 elif functionSequence[j] == 41:
-                    unencryptedNumbers[j] += abs(5 + lastInput) % 10
+                    results[j] += abs(5 + lastInput)
                 elif functionSequence[j] == 42:
-                    unencryptedNumbers[j] += abs(5 + secondLastInput) % 10
+                    results[j] += abs(5 + secondLastInput)
                 elif functionSequence[j] == 43:
-                    unencryptedNumbers[j] += abs(supplementaryNumbers[j] + (2 * lastInput)) % 10
+                    results[j] += abs(unencryptedNumbers[j] + (2 * lastInput))
                 elif functionSequence[j] == 44:
-                    unencryptedNumbers[j] += abs(supplementaryNumbers[j] + (2 * secondLastInput)) % 10
+                    results[j] += abs(unencryptedNumbers[j] + (2 * secondLastInput))
                 elif functionSequence[j] == 45:
-                    unencryptedNumbers[j] += abs(lastInput + (2 * supplementaryNumbers[j])) % 10
+                    results[j] += abs(lastInput + (2 * unencryptedNumbers[j]))
                 elif functionSequence[j] == 46:
-                    unencryptedNumbers[j] += abs(secondLastInput + (2 * supplementaryNumbers[j])) % 10
+                    results[j] += abs(secondLastInput + (2 * unencryptedNumbers[j]))
                 elif functionSequence[j] == 47:
-                    unencryptedNumbers[j] += abs(abs(secondLastInput - (2 * lastInput))) % 10
+                    results[j] += abs(abs(secondLastInput - (2 * lastInput)))
                 elif functionSequence[j] == 48:
-                    unencryptedNumbers[j] += abs(abs(supplementaryNumbers[j] - (2 * lastInput))) % 10
+                    results[j] += abs(abs(unencryptedNumbers[j] - (2 * lastInput)))
                 elif functionSequence[j] == 49:
-                    unencryptedNumbers[j] += abs(abs(lastInput - (2 * secondLastInput))) % 10
+                    results[j] += abs(abs(lastInput - (2 * secondLastInput)))
                 elif functionSequence[j] == 50:
-                    unencryptedNumbers[j] += abs(9 - supplementaryNumbers[j]) % 10
+                    results[j] += abs(9 - unencryptedNumbers[j])
                 elif functionSequence[j] == 51:
-                    unencryptedNumbers[j] += abs(9 - lastInput) % 10
+                    results[j] += abs(9 - lastInput)
                 elif functionSequence[j] == 52:
-                    unencryptedNumbers[j] += abs(9 - secondLastInput) % 10
+                    results[j] += abs(9 - secondLastInput)
                 elif functionSequence[j] == 53:
-                    unencryptedNumbers[j] += abs(18 - (supplementaryNumbers[j] + lastInput)) % 10
+                    results[j] += abs(18 - (unencryptedNumbers[j] + lastInput))
                 elif functionSequence[j] == 54:
-                    unencryptedNumbers[j] += abs(18 - (supplementaryNumbers[j] + secondLastInput)) % 10
+                    results[j] += abs(18 - (unencryptedNumbers[j] + secondLastInput))
                 elif functionSequence[j] == 55:
-                    unencryptedNumbers[j] += abs(18 - (lastInput + secondLastInput)) % 10
+                    results[j] += abs(18 - (lastInput + secondLastInput))
                 elif functionSequence[j] == 56:
-                    unencryptedNumbers[j] += abs(18 - (2 * supplementaryNumbers[j])) % 10
+                    results[j] += abs(18 - (2 * unencryptedNumbers[j]))
                 elif functionSequence[j] == 57:
-                    unencryptedNumbers[j] += abs(9 - abs(lastInput - supplementaryNumbers[j])) % 10
+                    results[j] += abs(9 - abs(lastInput - unencryptedNumbers[j]))
                 elif functionSequence[j] == 58:
-                    unencryptedNumbers[j] += abs(9 - abs(secondLastInput - supplementaryNumbers[j])) % 10
+                    results[j] += abs(9 - abs(secondLastInput - unencryptedNumbers[j]))
                 elif functionSequence[j] == 59:
-                    unencryptedNumbers[j] += abs(9 - abs(secondLastInput - lastInput)) % 10
-                unencryptedNumbers[j] %= 10
+                    results[j] += abs(9 - abs(secondLastInput - lastInput))
+                results[j] %= 10
+                unencryptedNumbers[j] = results[j]
         elif methods[i] == "FI":
             lastDigit = int(input("What is the last digit in the serial number? "))
             positions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]

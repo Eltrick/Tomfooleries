@@ -17,67 +17,12 @@ def main() -> None:
     
     print("<―――――――――――――――――――――START―――――――――――――――――――――>")
     base15Number = input("Enter base-15 number from least to most significant digits here: ").upper()
-    bitString = input("Enter 7-digit bitstring here: ")
-    if len(bitString) != 7:
-        print("Expected bitstring of length 7, restarting...")
-        main()
-    for x in range(0, 7):
-        if bitString[x] == "0":
-            bitstring.append(False)
-        elif bitString[x] == "1":
-            bitstring.append(True)
     base10Number = 0
     for x in range(0, len(base15Number)):
         base10Number += b15.index(base15Number[x]) * (15 ** x)
     print("Number: " + str(base10Number))
-    Factors = list(set(PrimeFactor(base10Number)))
-    tree = SetBool(Tree(0, base10Number))
-    tree.active = True
-    ratio = LogicCascade(tree)
-    sequence = ReductiveCascade(ratio)
-    indices = BaseConvert(base10Number, len(sequence))
-    if len(indices) % 2 == 1:
-        indices.insert(0, 0)
-    truthFractions = []
-    for x in range(0, len(indices)):
-        if x % 2 == 1: # If we are on an even index
-            if sequence[indices[x]] > sequence[indices[x - 1]]:
-                truthFractions.append(Fraction(sequence[indices[x - 1]], sequence[indices[x]]))
-            else:
-                truthFractions.append(Fraction(sequence[indices[x]], sequence[indices[x - 1]]))
-    for x in range(0, len(truthFractions)):
-        if truthFractions[x].den != 0:
-            truthFractions[x] = Fraction(math.floor(truthFractions[x].num / math.gcd(truthFractions[x].num, truthFractions[x].den)), math.floor(truthFractions[x].den / math.gcd(truthFractions[x].num, truthFractions[x].den)))
+    tree = Tree(0, base10Number)
     print(Log(tree, 0, base10Number, None))
-    print("Ratio: " + str(ratio.num) + "/" + str(ratio.den))
-    print("Reductive Sequence: " + str(sequence))
-    print("Number converted: " + str(indices))
-    fractionLogging = ""
-    for i in range(0, len(truthFractions)):
-        fractionLogging += str(truthFractions[i].num) + "/" + str(truthFractions[i].den)
-        if i != len(truthFractions) - 1:
-            fractionLogging += ", "
-    print("Quantum Logic Fractions: " + fractionLogging)
-    quantum = QuantumLogic(truthFractions)
-    answer = FractionCascade(quantum)
-    print("Quantum Boolean: " + str(quantum.num) + "/" + str(quantum.den))
-    print("Answer: " + str(answer))
-    for i in range(0, len(answer)):
-        answer[i] = str(bin(answer[i]))
-        answer[i] = answer[i].replace("0b", "")
-        tpString = ""
-        for j in range(0, len(answer[i])):
-            if answer[i][j] == "1":
-                tpString += "r"
-            elif answer[i][j] == "0":
-                tpString += "l"
-        TPCommands.append(tpString)
-    print("Answer in binary: " + str(answer))
-    fullCommand = ""
-    for tpCommand in TPCommands:
-        fullCommand += tpCommand + "m"
-    fullCommand += "m"
-    print("Command to input for Toilet Paper: " + fullCommand)
 
 def BaseConvert(num, base):
     l = []
@@ -93,12 +38,12 @@ def Log(node, depth, remainder, logic):
     logging = ""
     if depth == 0:
         logging += "<―――――――――――――――――――――TREE―――――――――――――――――――――>"
-        logging += "\n[" + str(node.prime) + ";" + str(remainder) + ";" + (("1" if node.active else "0") if logic != None else "-") + ";" + (("1" if logic else "0") if logic != None else "1") + "]"
+        logging += "\n[" + str(node.prime) + ";" + str(remainder) + "]"
     else:
         logging += "\n"
         for n in range(0, depth):
             logging += "- "
-        logging += "[" + str(node.prime) + ";" + str(remainder) + ";" + (("1" if node.active else "0") if logic != None else "-") + ";" + (("1" if logic else "0") if logic != None else "1") + "]"
+        logging += "[" + str(node.prime) + ";" + str(remainder) + "]"
     if logic == None:
         logic = True
     for child in node.children:

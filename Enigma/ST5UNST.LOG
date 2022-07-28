@@ -1,0 +1,149 @@
+ %% PLEASE DO NOT MODIFY OR DELETE THIS FILE! %% 
+ %% This file contains information about the installation of an application. %% 
+ %% It will be used to automatically remove all application components from your computer if you choose to do so. %% 
+
+
+NOTE: Beginning of the bootstrapper section
+
+CONFIG: Title: "ENIGMA"
+
+ACTION: TempFile: "C:\Windows\setup1.exe"
+(File was not found or was an older version -- new file copied)
+
+ACTION: RegKey: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion", "SharedDLLs"
+
+ACTION: SharedFile: "C:\Windows\System32\VB5StKit.dll"
+(File was not found or was an older version -- new file copied)
+
+ACTION: SystemFile: "C:\Windows\System32\MSVBVM50.dll"
+(File was not found or was an older version -- new file copied)
+
+ACTION: SystemFile: "C:\Windows\System32\StdOle2.tlb"
+(File currently on disk was already up to date)
+
+ACTION: SystemFile: "C:\Windows\System32\OleAut32.dll"
+(File currently on disk was already up to date)
+
+ACTION: SystemFile: "C:\Windows\System32\OlePro32.dll"
+(File currently on disk was already up to date)
+
+ACTION: SystemFile: "C:\Windows\System32\AsycFilt.dll"
+(File currently on disk was already up to date)
+
+NOTE: The file 'Ctl3d32.dll' was not copied because it is intended for use under Windows NT 3.51 only.  It is not needed under Windows 95 or NT 4.0.
+
+ACTION: SystemFile: "C:\Windows\System32\Ctl3d32.dll"
+(File currently on disk was already up to date)
+
+ACTION: SystemFile: "C:\Windows\System32\ComCat.dll"
+(File currently on disk was already up to date)
+
+ACTION: DllSelfRegister: "C:\Windows\system32\MSVBVM50.dll"
+
+ACTION: TLBRegister: "C:\Windows\system32\StdOle2.tlb"
+
+ACTION: DllSelfRegister: "C:\Windows\system32\OleAut32.dll"
+
+ACTION: DllSelfRegister: "C:\Windows\system32\OlePro32.dll"
+
+ACTION: DllSelfRegister: "C:\Windows\system32\ComCat.dll"
+
+NOTE: End of the bootstrapper section
+
+NOTE: Now spawning the main Setup program 'C:\Windows\setup1.exe'....
+
+ACTION: SharedFile: "C:\Windows\System32\COMDLG32.OCX"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\ENIGMA.exe"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\16-eni.JPG"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\01-eni.JPG"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\02-eni.JPG"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\03-eni.JPG"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\04-eni.JPG"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\05-eni.JPG"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\06-eni.JPG"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\07-eni.JPG"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\08-eni.JPG"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\09-eni.JPG"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\10-eni.JPG"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\11-eni.JPG"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\12-eni.JPG"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\13-eni.JPG"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\14-eni.JPG"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\15-eni.JPG"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\cover-m4-open.bmp"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\cover-i.bmp"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\cover-i-open.bmp"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\cover-m3.bmp"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\cover-m3-open.bmp"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\cover-m4.bmp"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\Enigma Sim Manual.pdf"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\Readme.txt"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\key-down.wav"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\key-up.wav"
+(File was not found or was an older version -- new file copied)
+
+ACTION: PrivateFile: "e:\_Tomfooleries\tick.wav"
+(File was not found or was an older version -- new file copied)
+
+ACTION: DllSelfRegister: "C:\Windows\System32\COMDLG32.OCX"
+
+ACTION: ShellLink: "", "ENIGMA"
+
+ACTION: RegKey: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion", "App Paths\ENIGMA.exe"
+
+ACTION: RegValue: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\ENIGMA.exe", ""
+
