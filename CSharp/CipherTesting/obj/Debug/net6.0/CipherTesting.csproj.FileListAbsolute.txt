@@ -1,0 +1,15 @@
+E:\_Tomfooleries\CSharp\CipherTesting\bin\Debug\net6.0\CipherTesting.exe
+E:\_Tomfooleries\CSharp\CipherTesting\bin\Debug\net6.0\CipherTesting.deps.json
+E:\_Tomfooleries\CSharp\CipherTesting\bin\Debug\net6.0\CipherTesting.runtimeconfig.json
+E:\_Tomfooleries\CSharp\CipherTesting\bin\Debug\net6.0\CipherTesting.dll
+E:\_Tomfooleries\CSharp\CipherTesting\bin\Debug\net6.0\CipherTesting.pdb
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net6.0\CipherTesting.csproj.AssemblyReference.cache
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net6.0\CipherTesting.GeneratedMSBuildEditorConfig.editorconfig
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net6.0\CipherTesting.AssemblyInfoInputs.cache
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net6.0\CipherTesting.AssemblyInfo.cs
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net6.0\CipherTesting.csproj.CoreCompileInputs.cache
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net6.0\CipherTesting.dll
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net6.0\refint\CipherTesting.dll
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net6.0\CipherTesting.pdb
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net6.0\CipherTesting.genruntimeconfig.cache
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net6.0\ref\CipherTesting.dll

@@ -1,0 +1,14 @@
+E:\_Tomfooleries\CSharp\CipherTesting\bin\Debug\net35\Eltrick.Ciphers.exe.config
+E:\_Tomfooleries\CSharp\CipherTesting\bin\Debug\net35\Eltrick.Ciphers.exe
+E:\_Tomfooleries\CSharp\CipherTesting\bin\Debug\net35\Eltrick.Ciphers.pdb
+E:\_Tomfooleries\CSharp\CipherTesting\bin\Debug\net35\Emik.Numerics.Fractions.dll
+E:\_Tomfooleries\CSharp\CipherTesting\bin\Debug\net35\Emik.Numerics.Fractions.xml
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\Eltrick.Ciphers.csproj.AssemblyReference.cache
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\Eltrick.Ciphers.csproj.SuggestedBindingRedirects.cache
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\Eltrick.Ciphers.GeneratedMSBuildEditorConfig.editorconfig
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\Eltrick.Ciphers.AssemblyInfoInputs.cache
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\Eltrick.Ciphers.AssemblyInfo.cs
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\Eltrick.Ciphers.csproj.CoreCompileInputs.cache
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\Eltrick.Ciphers.csproj.CopyComplete
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\Eltrick.Ciphers.exe
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\Eltrick.Ciphers.pdb

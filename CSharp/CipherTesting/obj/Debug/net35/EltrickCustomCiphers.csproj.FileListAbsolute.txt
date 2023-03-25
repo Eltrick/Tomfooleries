@@ -1,0 +1,14 @@
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\EltrickCustomCiphers.csproj.AssemblyReference.cache
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\EltrickCustomCiphers.csproj.SuggestedBindingRedirects.cache
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\EltrickCustomCiphers.GeneratedMSBuildEditorConfig.editorconfig
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\EltrickCustomCiphers.AssemblyInfoInputs.cache
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\EltrickCustomCiphers.AssemblyInfo.cs
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\EltrickCustomCiphers.csproj.CoreCompileInputs.cache
+E:\_Tomfooleries\CSharp\CipherTesting\bin\Debug\net35\EltrickCustomCiphers.exe.config
+E:\_Tomfooleries\CSharp\CipherTesting\bin\Debug\net35\EltrickCustomCiphers.exe
+E:\_Tomfooleries\CSharp\CipherTesting\bin\Debug\net35\EltrickCustomCiphers.pdb
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\EltrickCustomCiphers.csproj.CopyComplete
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\EltrickCustomCiphers.exe
+E:\_Tomfooleries\CSharp\CipherTesting\obj\Debug\net35\EltrickCustomCiphers.pdb
+E:\_Tomfooleries\CSharp\CipherTesting\bin\Debug\net35\Emik.Numerics.Fractions.dll
+E:\_Tomfooleries\CSharp\CipherTesting\bin\Debug\net35\Emik.Numerics.Fractions.xml
