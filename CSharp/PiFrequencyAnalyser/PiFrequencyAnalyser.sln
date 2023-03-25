@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PiFrequencyAnalyser", "PiFrequencyAnalyser.csproj", "{C98E2538-D7C2-4DA7-8F84-6DE835E2876A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C98E2538-D7C2-4DA7-8F84-6DE835E2876A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C98E2538-D7C2-4DA7-8F84-6DE835E2876A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C98E2538-D7C2-4DA7-8F84-6DE835E2876A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C98E2538-D7C2-4DA7-8F84-6DE835E2876A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {03B02A23-5E70-4CC0-A791-6425E5F84B49}
+	EndGlobalSection
+EndGlobal

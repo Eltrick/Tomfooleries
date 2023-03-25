@@ -16,10 +16,7 @@ def main() -> None:
     TPCommands = []
     
     print("<―――――――――――――――――――――START―――――――――――――――――――――>")
-    base15Number = input("Enter base-15 number from least to most significant digits here: ").upper()
-    base10Number = 0
-    for x in range(0, len(base15Number)):
-        base10Number += b15.index(base15Number[x]) * (15 ** x)
+    base10Number = int(input("Enter base-10 number from least to most significant digits here: ").upper())
     print("Number: " + str(base10Number))
     tree = Tree(0, base10Number)
     print(Log(tree, 0, base10Number, None))
