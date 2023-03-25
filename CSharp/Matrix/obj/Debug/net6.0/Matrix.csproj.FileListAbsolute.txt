@@ -1,0 +1,15 @@
+E:\_Tomfooleries\csharp\Matrix\bin\Debug\net6.0\Matrix.exe
+E:\_Tomfooleries\csharp\Matrix\bin\Debug\net6.0\Matrix.deps.json
+E:\_Tomfooleries\csharp\Matrix\bin\Debug\net6.0\Matrix.runtimeconfig.json
+E:\_Tomfooleries\csharp\Matrix\bin\Debug\net6.0\Matrix.dll
+E:\_Tomfooleries\csharp\Matrix\bin\Debug\net6.0\Matrix.pdb
+E:\_Tomfooleries\csharp\Matrix\obj\Debug\net6.0\Matrix.csproj.AssemblyReference.cache
+E:\_Tomfooleries\csharp\Matrix\obj\Debug\net6.0\Matrix.GeneratedMSBuildEditorConfig.editorconfig
+E:\_Tomfooleries\csharp\Matrix\obj\Debug\net6.0\Matrix.AssemblyInfoInputs.cache
+E:\_Tomfooleries\csharp\Matrix\obj\Debug\net6.0\Matrix.AssemblyInfo.cs
+E:\_Tomfooleries\csharp\Matrix\obj\Debug\net6.0\Matrix.csproj.CoreCompileInputs.cache
+E:\_Tomfooleries\csharp\Matrix\obj\Debug\net6.0\Matrix.dll
+E:\_Tomfooleries\csharp\Matrix\obj\Debug\net6.0\refint\Matrix.dll
+E:\_Tomfooleries\csharp\Matrix\obj\Debug\net6.0\Matrix.pdb
+E:\_Tomfooleries\csharp\Matrix\obj\Debug\net6.0\Matrix.genruntimeconfig.cache
+E:\_Tomfooleries\csharp\Matrix\obj\Debug\net6.0\ref\Matrix.dll
