@@ -144,14 +144,14 @@ def main() -> None:
     print("Final bitstring: " + logging)
     pivot[2] = int(input("Enter the number of coloured particles on the module: "))
     truthValues = truthValues[::-1]
-    if truthValues[6]:
+    if truthValues[0]:
         rotation *= -1
-    for y in range(0, 3):
+    for y in range(1, 4):
         if truthValues[y]:
-            pivot[1] += 2 ** y
-    for x in range(3, 6):
+            pivot[1] += 2 ** (y - 1)
+    for x in range(4, 7):
         if truthValues[x]:
-            pivot[0] += 2 ** (x - 3)
+            pivot[0] += 2 ** (x - 4)
     print("Position (" + str(pivot[0]) + ", " + str(pivot[1]) + "), [direction] = " + cardinals[pivot[2]])
     for i in range(0, 7):
         print("Starting step " + str(i))

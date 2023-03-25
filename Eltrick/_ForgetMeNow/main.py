@@ -7,9 +7,9 @@ def main() -> None:
     unencryptedNumbers = [int(x) for x in list(input("Enter funny number string: "))]
     unencryptedArray = [str(x) for x in unencryptedNumbers]
     print("Number of stages: " + str(len(unencryptedArray)))
-    firstDigit = int(input("Input the first digit of the Serial Number: "))
-    secondToLastCalc = int(input("Input the last digit of the Serial Number: "))
-    lastCalc = 0
+    firstDigit = int(input("Input the first digit of the Serial Number: ")) % 10
+    secondToLastCalc = int(input("Input the last digit of the Serial Number: ")) % 10
+    lastCalc = int(input("Number pressed to activate module: ")) % 10
     for j in range(0, len(unencryptedNumbers)):
         if j == 1:
             secondToLastCalc = lastCalc
