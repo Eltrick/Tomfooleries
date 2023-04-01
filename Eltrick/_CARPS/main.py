@@ -1,8 +1,8 @@
 import random
-import tkinter as tk
-import tkinter.font as font
+from tkinter import *
 
-window = tk.Tk()
+
+window = Tk()
 states = ["NULL", "ROCK", "PAPER", "SCISSORS"]
 pointer = 0
 colours = ["black", "red", "green2", "blue"]
@@ -15,11 +15,12 @@ def setup():
     global pointer
     global grid
     global next
+    
     # Main grid
     for i in range(48):
         r = i // 6
         c = i % 6
-        button = tk.Button(
+        button = Button(
             window,
             width = 8,
             height = 4,
@@ -29,7 +30,7 @@ def setup():
         )
         buttons[r][c] = button
         button.grid(row = r, column = c)
-    rock = tk.Button(
+    rock = Button(
         window,
         width = 14,
         height = 4,
@@ -38,7 +39,7 @@ def setup():
         command = lambda: alterSelectedState(1)
     )
     rock.grid(row = 10, column = 0, columnspan = 2)
-    paper = tk.Button(
+    paper = Button(
         window,
         width = 14,
         height = 4,
@@ -47,7 +48,7 @@ def setup():
         command = lambda: alterSelectedState(2)
     )
     paper.grid(row = 10, column = 2, columnspan = 2)
-    scissors = tk.Button(
+    scissors = Button(
         window,
         width = 14,
         height = 4,
@@ -56,7 +57,7 @@ def setup():
         command = lambda: alterSelectedState(3)
     )
     scissors.grid(row = 10, column = 4, columnspan = 2)
-    next = tk.Button(
+    next = Button(
         window,
         width = 54,
         height = 4,

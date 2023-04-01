@@ -1,8 +1,10 @@
-import keyboard
-import tkinter as tk
-import tkinter.font as font
+import random
+import threading
+from tkinter import *
 
-window = tk.Tk()
+window = Tk()
+window.title("Pointer Pointer")
+
 states = [0, 1, 2]
 pointer = 0
 colours = ["black", "DodgerBlue2", "green", "red"]
@@ -16,7 +18,7 @@ latestRow = 0
 latestCol = 0
 functionalityPivot = [3, 11]
 
-def setup():
+def Setup():
     global grid
     global latestRow
     global latestCol
@@ -24,7 +26,7 @@ def setup():
     for i in range(36):
         r = i // 6
         c = i % 6
-        button = tk.Button(
+        button = Button(
             window,
             width = 8,
             height = 4,
@@ -34,7 +36,7 @@ def setup():
         )
         buttons[r][c] = button
         button.grid(row = r, column = c)
-    reset = tk.Button(
+    reset = Button(
         window,
         width = 55,
         height = 4,
@@ -46,7 +48,7 @@ def setup():
     for i in range(8):
         r = functionalityPivot[0] + rowtransf[i]
         c = functionalityPivot[0] + coltransf[i]
-        button = tk.Button(
+        button = Button(
             window,
             width = 8,
             height = 4,
@@ -117,5 +119,12 @@ def ColourSurroundings(pivotRow, pivotColumn, rowOffset, columnOffset):
         buttons[newRow][newColumn]["bg"] = surroundingColours[i]
         buttons[newRow][newColumn]["activebackground"] = surroundingColours[i]
 
-setup()
+def Update():
+    threading.Timer(1.0, Update).start()
+    x = random.randint(1, 8)
+    window.iconbitmap("arrow" + str(x) + ".ico")
+
+Setup()
+Update()
+
 window.mainloop()
