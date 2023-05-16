@@ -8,24 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\pc\\.nuget\\packages\\": {},
-    "E:\\Visual Studio Shared\\NuGetPackages": {}
+    "C:\\Users\\krtie\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\_Tomfooleries\\csharp\\BaseNamer\\BaseNamer.csproj",
+      "projectUniqueName": "D:\\_Tomfooleries\\CSharp\\BaseNamer\\BaseNamer.csproj",
       "projectName": "BaseNamer",
-      "projectPath": "E:\\_Tomfooleries\\csharp\\BaseNamer\\BaseNamer.csproj",
-      "packagesPath": "C:\\Users\\pc\\.nuget\\packages\\",
-      "outputPath": "E:\\_Tomfooleries\\csharp\\BaseNamer\\obj\\",
+      "projectPath": "D:\\_Tomfooleries\\CSharp\\BaseNamer\\BaseNamer.csproj",
+      "packagesPath": "C:\\Users\\krtie\\.nuget\\packages\\",
+      "outputPath": "D:\\_Tomfooleries\\CSharp\\BaseNamer\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "E:\\Visual Studio Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\krtie\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -66,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
