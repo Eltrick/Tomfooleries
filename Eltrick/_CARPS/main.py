@@ -140,6 +140,7 @@ def iterateGrid():
         c = i % 6
         grid[r][c] = tempGrid[r][c]
     updateGrid()
+    printAnswer()
 
 def updateGrid():
     for i in range(48):
@@ -147,6 +148,18 @@ def updateGrid():
         c = i % 6
         buttons[r][c]["bg"] = colours[grid[r][c]]
         buttons[r][c]["activebackground"] = colours[grid[r][c]]
+
+def printAnswer():
+    string = ""
+    for i in range(1, 4):
+        answerList = []
+        string += states[i][0] + " "
+        for j in range(48):
+            if grid[j // 6][j % 6] == i:
+                answerList.append("abcdef"[j % 6] + str(j // 6 + 1))
+        answerList.sort()
+        string += " ".join(answerList) + " "
+    print(string)
 
 def bound(val) -> int:
     if val == 0:

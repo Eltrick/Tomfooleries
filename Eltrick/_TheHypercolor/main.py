@@ -45,14 +45,15 @@ def main() -> None:
 
     for i in range(0, 3):
         print("----------------------------SUBMISSION----------------------------")
-        moduleState = input("Vertex + Ternary: ").split(" ")
+        moduleState = input("Vertex (XYZW) + Ternary: ").split(" ")
         moduleState[0] = VertexToIndex(moduleState[0])
         moduleState[1] = [int(x) for x in moduleState[1]]
         for j in range(0, 3):
             for k in range(0, moduleState[1][j]):
                 print("Applying: " + ModuleRotations[j][i])
                 moduleState[0] = VertexRotation(moduleState[0], ModuleRotations[j][i])
-        print("Input Vertex " + IndexToVertex(moduleState[0]))
+        print("Input Vertex: " + IndexToVertex(moduleState[0]))
+        print("Input Vertex (TP): " + StringToName(IndexToVertex(moduleState[0])))
 
     # while True:
     #     initialMapping = input("Enter string representing states of the module, for a given channel: ").upper().split(" ")
@@ -77,6 +78,12 @@ def VertexToIndex(input: str) -> int:
     for i in range(0, len(input)):
         res += (2 ** i) * (1 if input[i] == "+" else 0)
     return res
+
+def StringToName(input: str) -> str:
+    res = ""
+    for i in range(0, len(input)):
+        res += (["left", "bottom", "front", "zig"][i] if input[i] == "-" else ["right", "top", "back", "zag"][i]) + "-"
+    return res[:-1]
 
 def VertexRotation(vertex: int, rotation: str) -> int:
     return RotationalMapping[rotation].index(vertex)

@@ -23,15 +23,19 @@ def main() -> None:
     print("--------------------------------------<START_MODULE>--------------------------------------")
     
     stage = 0
+    solveCount = -1;
     
     while not end:
+        solveCount += 1
+        print("Current Solve Count: " + str(solveCount))
         stageInfo = input("Enter stage " + str(stage) + "'s information in the order shown: ").upper().split(" ")
         infoValid = infoValidator(stageInfo)
         while not infoValid:
             stageInfo = input("Invalid information entered. Try again: ").upper().split(" ")
             infoValid = infoValidator(stageInfo)
         
-        solveCount = stage
+        if(stageInfo[0] == "QSKIP"):
+            continue
         
         nixieValues = [int(x) for x in stageInfo[4]]
         
@@ -135,11 +139,6 @@ def main() -> None:
         print("Absolute Cosine = " + str(cosAns))
         
         answer = sinAns + cosAns
-        if answer < 0:
-            answer %= 100000
-            answer -= 100000
-        else:
-            answer %= 100000
         print("Answer = " + str(answer))
         STAGES.append(answer)
         
@@ -149,36 +148,20 @@ def main() -> None:
 def infoValidator(stageInfo: list) -> bool:
     if stageInfo[0].upper() == "END":
         print("------------------------------------------<FINAL>------------------------------------------")
-        stages = [x/100000 for x in STAGES]
-        for stage in STAGES:
-            if abs(stage * 100000) % 1000 == 999:
-                if stage > 0:
-                    stage += 0.00001
-                else:
-                    stage -= 0.00001
         print("Initially, the calculated values of each stage are: " + str(STAGES))
-        print("At the end, the calculated values of each stage are: " + str(stages))
         
-        finalSum = 0;
+        finalSum = sum(STAGES);
+        print("Therefore, the sum of all stages is: " + str(finalSum))
         
-        for stage in stages:
-            finalSum += stage
-            
-        finalSum = math.trunc(finalSum * 100000)
+        finalSum = (finalSum / 100000) % 1
         
-        if abs(finalSum * 100000) % 1000 == 999:
-            if finalSum > 0:
-                finalSum += 1
-            else:
-                finalSum -= 1
-        
-        finalSum /= 100000
-        finalSum %= 1
         print("Therefore, the sum of all values are: " + str(finalSum))
         finalAnswer = math.floor(math.acos(finalSum)/math.pi * 180)
         print("And so, the Final Answer is: " + str(finalAnswer))
         print("And that is The End! Congratulations! - L.V.")
         exit();
+    elif stageInfo[0].upper() == "QSKIP":
+        return True;
     elif len(stageInfo) != 5:
         print("Expected five parameters.")
         return False;

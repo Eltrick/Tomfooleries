@@ -71,10 +71,10 @@ def Command(commands: str) -> None:
             looptimes = 0
             print("Start of loop.")
         elif commands[i] == "]":
+            looptimes += 1
             if dataTape[pointer] == 0 or looptimes == batteryCount:
                 print("End of loop.")
             else:
-                looptimes += 1
                 i = loopstart
                 print("Looped " + str(looptimes) + " times. Going to start of loop.")
         elif commands[i] == ".":

@@ -3,7 +3,7 @@ import math
 # ROYGCBPMIW
 Stage5Values = [-4, -1, 3, -2, -5, 4, -3, 1, 5, 2]
 LEDs = [False, False, False, False, False, False, False, False, False, False]
-Final = ""
+Final = []
 indicators = ""
 serialPortCount = 0
 serialNumber = ""
@@ -328,8 +328,7 @@ def main() -> None:
         calculatedSequence = stageCalculation(stage, stage, hcount, ButtonLayout, tempAns)
         print("Calculated Sequence for this stage is: " + calculatedSequence)
         CalculatedSequences.append(calculatedSequence)
-        for i in range(0, len(calculatedSequence)):
-            Final += calculatedSequence[i]
+        Final.append(calculatedSequence)
         for i in range(0, len(LEDs)):
             LEDs[i] = False
         stage += 1
@@ -566,15 +565,7 @@ def stageCalculation(rule: int, stage: int, hcount: int, ButtonLayout: list, tem
 def infoValidator(infoDump: list) -> bool:
     if infoDump[0] == "END":
         print("----------------------------------------<FINAL_PHASE>----------------------------------------")
-        print("The final sequence of colours to input into the module to finish Simon off is: " + Final)
-        finalButtonLayout = list(input("Enter the final button layout of the module, as you did for all the others: "))
-        FinalTPCommand = ""
-        for i in range(0, len(Final)):
-            FinalTPCommand += str(finalButtonLayout.index(Final[i]) + 1)
-            if i != len(Final) - 1:
-                FinalTPCommand += " "
-        print("As such, the finisher, the final TP command to finish Simon off, is: " + FinalTPCommand)
-        print("I no longer have any use to you, do I? Goodbye then.")
+        print("The final sequence of colours to input into the module to finish Simon off is: " + " ".join(Final))
         exit()
     if infoDump[0] == "QSKIP":
         return True
