@@ -7,7 +7,7 @@ def main() -> None:
 
     while len(goals) != 1:
         info = input("Input info on Klaxon: ").upper().split(" ")
-        if info[0] == "-":
+        if info[0] == "-" or info[0] == "!":
             for i in range(0, len(info[1])):
                 if info[1][i] in goals:
                     goals.pop(goals.index(info[1][i]))

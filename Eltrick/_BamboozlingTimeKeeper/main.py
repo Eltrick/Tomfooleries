@@ -258,12 +258,8 @@ def main() -> None:
 
             # Step 20+21, stage 2
             if "(" in infoDump[i][0][1] or "1" in infoDump[i][0][1] or "2" in infoDump[i][0][1] or "3" in infoDump[i][0][1] or "4" in infoDump[i][0][1]:
-                if ManualOperationsList[7 - TableColumnIndices.index(buttonInfoDump[i][1][0])][(TableRowIndices.index(infoDump[0][1][1]) + TableRowIndices.index(infoDump[1][1][1])) % 56] == "STOP":
-                    continue
                 stageValues[i] = PerformOperation(stageValues[i], ManualOperationsList[7 - TableColumnIndices.index(buttonInfoDump[i][1][0])][(TableRowIndices.index(infoDump[0][1][1]) + TableRowIndices.index(infoDump[1][1][1])) % 56], i)
                 print("1: " + ManualOperationsList[7 - TableColumnIndices.index(buttonInfoDump[i][1][0])][(TableRowIndices.index(infoDump[0][1][1]) + TableRowIndices.index(infoDump[1][1][1])) % 56])
-                if ManualOperationsList[(TableColumnIndices.index(buttonInfoDump[i][2][0]) + TableColumnIndices.index(buttonInfoDump[i][0][0])) % 8][abs(TableRowIndices.index(infoDump[0][1][1]) - TableRowIndices.index(infoDump[1][1][1]))] == "STOP":
-                    continue
                 print("2: " + ManualOperationsList[(TableColumnIndices.index(buttonInfoDump[i][2][0]) + TableColumnIndices.index(buttonInfoDump[i][0][0])) % 8][abs(TableRowIndices.index(infoDump[0][1][1]) - TableRowIndices.index(infoDump[1][1][1]))])
                 stageValues[i] = PerformOperation(stageValues[i], ManualOperationsList[(TableColumnIndices.index(buttonInfoDump[i][2][0]) + TableColumnIndices.index(buttonInfoDump[i][0][0])) % 8][abs(TableRowIndices.index(infoDump[0][1][1]) - TableRowIndices.index(infoDump[1][1][1]))], i)
             print("Step 20+21_2: " + str(stageValues[i]))

@@ -1,35 +1,37 @@
 import random
-import threading
+import math
 from tkinter import *
 
 window = Tk()
 window.title("Pointer Pointer")
 
+rowCount = 4
+colCount = 4
 states = [0, 1, 2]
 pointer = 0
 colours = ["black", "DodgerBlue2", "green", "red"]
 surroundingColours = ["black", "red", "green2", "blue", "white", "yellow", "magenta", "cyan"]
-grid = [[0] * 6 for i in range(6)]
-buttons = [[None] * 6 for i in range(6)]
+grid = [[0] * colCount for i in range(rowCount)]
+buttons = [[None] * colCount for i in range(rowCount)]
 functionality = None
 rowtransf = [-1, -1, -1, 0, 1, 1, 1, 0]
 coltransf = [-1, 0, 1, 1, 1, 0, -1, -1]
 latestRow = 0
 latestCol = 0
-functionalityPivot = [3, 11]
+functionalityPivot = [2, 11]
 
 def Setup():
     global grid
     global latestRow
     global latestCol
     
-    for i in range(36):
-        r = i // 6
-        c = i % 6
+    for i in range(colCount * rowCount):
+        r = i // rowCount
+        c = i % colCount
         button = Button(
             window,
-            width = 8,
-            height = 4,
+            width = math.ceil(4 / 3 * colCount),
+            height = math.ceil(2 / 3 * rowCount),
             bg = colours[0],
             activebackground = colours[0],
             command = lambda row = r, col = c: Press(row, col)
@@ -38,20 +40,20 @@ def Setup():
         button.grid(row = r, column = c)
     reset = Button(
         window,
-        width = 55,
+        width = math.ceil(55 / 8 * colCount),
         height = 4,
         bg = colours[3],
         activebackground = colours[3],
         command = lambda: ResetGrid()
     )
-    reset.grid(row = 8, column = 0, columnspan = 6)
+    reset.grid(row = rowCount + 1, column = 0, columnspan = colCount)
     for i in range(8):
         r = functionalityPivot[0] + rowtransf[i]
         c = functionalityPivot[0] + coltransf[i]
         button = Button(
             window,
-            width = 8,
-            height = 4,
+            width = math.ceil(4 / 3 * colCount),
+            height = math.ceil(2 / 3 * rowCount),
             bg = colours[0],
             activebackground = colours[0],
             command = lambda row = r, col = c, idx = i: ColourSurroundings(latestRow, latestCol, rowtransf[idx], coltransf[idx])
@@ -69,24 +71,24 @@ def Press(row, col):
     latestCol = col
     
     if grid[row][col] == 2:
-        for i in range(36):
-            r = i // 6
-            c = i % 6
+        for i in range(rowCount * colCount):
+            r = i // rowCount
+            c = i % colCount
             if not (row == r and col == c):
                 grid[r][c] = 0
                 buttons[r][c]["bg"] = colours[grid[r][c]]
                 buttons[r][c]["activebackground"] = colours[grid[r][c]]
     else:
-        for i in range(36):
-            r = i // 6
-            c = i % 6
+        for i in range(rowCount * colCount):
+            r = i // rowCount
+            c = i % colCount
             buttons[r][c]["bg"] = colours[grid[r][c]]
             buttons[r][c]["activebackground"] = colours[grid[r][c]]
 
 def ResetGrid():
-    for i in range(36):
-        row = i // 6
-        col = i % 6
+    for i in range(rowCount * colCount):
+        row = i // rowCount
+        col = i % colCount
         grid[row][col] = 0
         buttons[row][col]["bg"] = colours[0]
         buttons[row][col]["activebackground"] = colours[0]
@@ -114,17 +116,16 @@ def ColourSurroundings(pivotRow, pivotColumn, rowOffset, columnOffset):
     start = Intersection(FindIndices(rowtransf, rowOffset), FindIndices(coltransf, columnOffset))[0]
     for i in range(8):
         iteration = (start + i) % 8
-        newRow = (pivotRow + rowtransf[iteration]) % 6
-        newColumn = (pivotColumn + coltransf[iteration]) % 6
+        newRow = (pivotRow + rowtransf[iteration]) % rowCount
+        newColumn = (pivotColumn + coltransf[iteration]) % colCount
         buttons[newRow][newColumn]["bg"] = surroundingColours[i]
         buttons[newRow][newColumn]["activebackground"] = surroundingColours[i]
 
-def Update():
-    threading.Timer(1.0, Update).start()
+def PickRandomIcon():
     x = random.randint(1, 8)
     window.iconbitmap("arrow" + str(x) + ".ico")
 
 Setup()
-Update()
+PickRandomIcon()
 
 window.mainloop()

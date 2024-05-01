@@ -136,6 +136,19 @@ def main() -> None:
             print(FINALSHAPE[8] + "  " + FINALSHAPE[9] + "  " + FINALSHAPE[10] + "  " + FINALSHAPE[11] + "  " + FINALSHAPE[12] + "  ")
             print("-----<" + FINALSHAPE[13] + ">-----")
             print("")
+            
+            finalString = ""
+            for i in range(0, len(COLORS)):
+                possiblePositions = []
+                for j in range(0, len(FINALSHAPE)):
+                    if FINALSHAPE[j] == COLORS[i]:
+                        possiblePositions.append(j)
+                if len(possiblePositions) != 0:
+                    finalString += COLORS[i] + " "
+                    finalString += " ".join([str(x + 1) for x in possiblePositions]) + " "
+            print("TP Command: " + finalString)
+                
+            print("")
             print("Input this sequence of colours into the module and press Submit. The module should now solve. If it doesn't, you know who to contact and scream your lungs out. But it's also on you for using this solver blindly. - L.V.")
             exit()
         elif len(displays) == 2:
