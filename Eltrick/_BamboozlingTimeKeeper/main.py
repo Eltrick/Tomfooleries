@@ -319,7 +319,7 @@ def main() -> None:
             for j in range(0, len(buttonInfoDump)):
                 if len(buttonInfoDump[j][0]) == maxLetterCount:
                     tieQuestionMark += 1
-            if tieQuestionMark != 1 or input("Is there an RT sensitive module considered by BTK on the bomb? (Y/N): ").upper() == "Y":
+            if tieQuestionMark != 0 or input("Is there an RT sensitive module considered by BTK on the bomb? (Y/N): ").upper() == "Y":
                 ButtonPressIndices[i] = letterCounts.index(maxLetterCount)
                 print("Step 29_2 applies, setting correct button to button " + str(ButtonPressIndices[i] + 1))
             
