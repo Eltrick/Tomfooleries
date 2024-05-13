@@ -305,6 +305,8 @@ def main() -> None:
             twoFactorCount = int(input("Input the number of Two Factor widgets on the bomb: "))
             if twoFactorCount != 0:
                 stageValues[i] += (50 * twoFactorCount)
+                print("Step 27_2: " + str(stageValues[i]) + "; Ending Stage 2.")
+                continue
             print("Step 27_2: " + str(stageValues[i]))
 
             # Step 28, stage 2
@@ -317,9 +319,9 @@ def main() -> None:
             maxLetterCount = max(letterCounts)
             tieQuestionMark = 0
             for j in range(0, len(buttonInfoDump)):
-                if len(buttonInfoDump[j][0]) == maxLetterCount:
+                if letterCounts[j] == maxLetterCount:
                     tieQuestionMark += 1
-            if tieQuestionMark != 0 or input("Is there an RT sensitive module considered by BTK on the bomb? (Y/N): ").upper() == "Y":
+            if tieQuestionMark == 1 and input("Is there an RT sensitive module considered by BTK on the bomb? (Y/N): ").upper() == "N":
                 ButtonPressIndices[i] = letterCounts.index(maxLetterCount)
                 print("Step 29_2 applies, setting correct button to button " + str(ButtonPressIndices[i] + 1))
             
@@ -339,7 +341,7 @@ def main() -> None:
     if unicorn:
         for i in range(0, len(scaleFactors)):
             scaleFactors[i] == 2
-            print("Unicorn occured, scale factors are 2")
+            print("Unicorn occured, scale factors are 2.")
     else:
         bombStartingTime = False
         for i in range(0, len(scaleFactors)):

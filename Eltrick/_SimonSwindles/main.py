@@ -16,6 +16,7 @@ def main() -> None:
     Constant = list(input("Input the Constant: "))
     N = 0
     coloursFound = 0
+    Impossibles = [[], [], [], [], [], []]
     print("-----------------------------------<THE_TEDIUM>------------------------------------")
     while True:
         print("-------------------------------------<N = " + str(N) + ">--------------------------------------")
@@ -44,33 +45,62 @@ def main() -> None:
                     if TrueResponse[i] == colourXor(Constant[i], "W"):
                         SolutionArray[i] = colourXor(infoDump[0], infoDump[1][i])
                         coloursFound += 1
-            print("After XOR'ing with the Output: " + "".join(SolutionArray))
+                    else:
+                        for j in range(0, len(Impossibles[i])):
+                            Impossibles[i][j] = colourXor(Impossibles[i][j], infoDump[1][i])
+                        Impossibles[i].append(colourXor(infoDump[0], infoDump[1][i]))
+            print("After XORing with the Output: " + "".join(SolutionArray))
             if RGBBool[0]:
                 temp = SolutionArray[2] + SolutionArray[1] + SolutionArray[0]
+                temp2 = []
+                temp2.append(Impossibles[2])
+                temp2.append(Impossibles[1])
+                temp2.append(Impossibles[0])
                 for i in range(0, 3):
                     SolutionArray[i] = temp[i]
+                    Impossibles[i] = temp2[i].copy()
                 print("R is T, new answer is: " + "".join(SolutionArray))
             elif not RGBBool[0]:
                 temp = SolutionArray[5] + SolutionArray[4] + SolutionArray[3]
+                temp2 = []
+                temp2.append(Impossibles[5])
+                temp2.append(Impossibles[4])
+                temp2.append(Impossibles[3])
                 for i in range(3, 6):
                     SolutionArray[i] = temp[i - 3]
+                    Impossibles[i] = temp2[i - 3].copy()
                 print("R is F, new answer is: " + "".join(SolutionArray))
             if RGBBool[1]:
                 for i in range(0, 3):
                     if SolutionArray[i] != "-":
                         SolutionArray[i] = colourXor(SolutionArray[i], "W")
+                    for j in range(0, len(Impossibles[i])):
+                        Impossibles[i][j] = colourXor(Impossibles[i][j], "W")
                 print("G is T, new answer is: " + "".join(SolutionArray))
             elif not RGBBool[1]:
                 for i in range(3, 6):
                     if SolutionArray[i] != "-":
                         SolutionArray[i] = colourXor(SolutionArray[i], "W")
+                    for j in range(0, len(Impossibles[i])):
+                        Impossibles[i][j] = colourXor(Impossibles[i][j], "W")
                 print("G is F, new answer is: " + "".join(SolutionArray))
             if RGBBool[2]:
                 SolutionArray[:] = SolutionArray[1:] + SolutionArray[:1]
+                Impossibles[:] = Impossibles[1:] + Impossibles[:1]
                 print("B is T, new answer is: " + "".join(SolutionArray))
             elif not RGBBool[2]:
                 SolutionArray[:] = SolutionArray[5:] + SolutionArray[:5]
+                Impossibles[:] = Impossibles[5:] + Impossibles[:5]
                 print("B is F, new answer is: " + "".join(SolutionArray))
+            possibleLogging = []
+            for i in range(0, len(Impossibles)):
+                Impossibles[i] = list(set(Impossibles[i]))
+                p = []
+                for j in range(0, len("RGBCMYWK")):
+                    if "RGBCMYWK"[j] not in Impossibles[i]:
+                        p.append("RGBCMYWK"[j])
+                possibleLogging.append("".join(p))
+            print("Possible colours for each position is: " + ";".join(possibleLogging))
         elif len(infoDump[0]) == 6:
             inputs = list(infoDump[0])
             ConstantCopy = ["", "", "", "", "", ""]
@@ -117,7 +147,11 @@ def main() -> None:
                     if infoDump[1][i] == colourXor(ConstantCopy[i], "W"):
                         SolutionArray[i] = colourXor(infoDump[0][i], infoDump[1][i])
                         coloursFound += 1
-            print("After finding opposites, the new current answer is: " + "".join(SolutionArray))
+                    else:
+                        for j in range(0, len(Impossibles[i])):
+                            Impossibles[i][j] = colourXor(Impossibles[i][j], infoDump[1][i])
+                        Impossibles[i].append(colourXor(infoDump[0][i], infoDump[1][i]))
+            print("After finding opposites and XORing with output, the new current answer is: " + "".join(SolutionArray))
             if infoDump[0][N % 6] in "RMYW":
                 RGBBool[0] = True
             else:
@@ -132,30 +166,55 @@ def main() -> None:
                 RGBBool[2] = False
             if RGBBool[0]:
                 temp = SolutionArray[2] + SolutionArray[1] + SolutionArray[0]
+                temp2 = []
+                temp2.append(Impossibles[2])
+                temp2.append(Impossibles[1])
+                temp2.append(Impossibles[0])
                 for i in range(0, 3):
                     SolutionArray[i] = temp[i]
+                    Impossibles[i] = temp2[i].copy()
                 print("R is T, new answer is: " + "".join(SolutionArray))
             elif not RGBBool[0]:
                 temp = SolutionArray[5] + SolutionArray[4] + SolutionArray[3]
+                temp2 = []
+                temp2.append(Impossibles[5])
+                temp2.append(Impossibles[4])
+                temp2.append(Impossibles[3])
                 for i in range(3, 6):
                     SolutionArray[i] = temp[i - 3]
+                    Impossibles[i] = temp2[i - 3].copy()
                 print("R is F, new answer is: " + "".join(SolutionArray))
             if RGBBool[1]:
                 for i in range(0, 3):
                     if SolutionArray[i] != "-":
                         SolutionArray[i] = colourXor(SolutionArray[i], "W")
+                    for j in range(0, len(Impossibles[i])):
+                        Impossibles[i][j] = colourXor(Impossibles[i][j], "W")
                 print("G is T, new answer is: " + "".join(SolutionArray))
             elif not RGBBool[1]:
                 for i in range(3, 6):
                     if SolutionArray[i] != "-":
                         SolutionArray[i] = colourXor(SolutionArray[i], "W")
+                    for j in range(0, len(Impossibles[i])):
+                        Impossibles[i][j] = colourXor(Impossibles[i][j], "W")
                 print("G is F, new answer is: " + "".join(SolutionArray))
             if RGBBool[2]:
                 SolutionArray[:] = SolutionArray[1:] + SolutionArray[:1]
+                Impossibles[:] = Impossibles[1:] + Impossibles[:1]
                 print("B is T, new answer is: " + "".join(SolutionArray))
             elif not RGBBool[2]:
                 SolutionArray[:] = SolutionArray[5:] + SolutionArray[:5]
+                Impossibles[:] = Impossibles[5:] + Impossibles[:5]
                 print("B is F, new answer is: " + "".join(SolutionArray))
+            possibleLogging = []
+            for i in range(0, len(Impossibles)):
+                Impossibles[i] = list(set(Impossibles[i]))
+                p = []
+                for j in range(0, len("RGBCMYWK")):
+                    if "RGBCMYWK"[j] not in Impossibles[i]:
+                        p.append("RGBCMYWK"[j])
+                possibleLogging.append("".join(p))
+            print("Possible colours for each position is: " + ";".join(possibleLogging))
         elif infoDump[0] == "END":
             if coloursFound == 6:
                 print("All six colours found! Solution: " + "".join(SolutionArray))
