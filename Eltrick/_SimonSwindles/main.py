@@ -43,6 +43,7 @@ def main() -> None:
                     SolutionArray[i] = colourXor(SolutionArray[i], infoDump[1][i])
                 else:
                     if TrueResponse[i] == colourXor(Constant[i], "W"):
+                        Impossibles[i] = list("RGBCMYWK")
                         SolutionArray[i] = colourXor(infoDump[0], infoDump[1][i])
                         coloursFound += 1
                     else:
@@ -96,9 +97,12 @@ def main() -> None:
             for i in range(0, len(Impossibles)):
                 Impossibles[i] = list(set(Impossibles[i]))
                 p = []
-                for j in range(0, len("RGBCMYWK")):
-                    if "RGBCMYWK"[j] not in Impossibles[i]:
-                        p.append("RGBCMYWK"[j])
+                if len(Impossibles[i]) == 8:
+                    p.append("-")
+                else:
+                    for j in range(0, len("RGBCMYWK")):
+                        if "RGBCMYWK"[j] not in Impossibles[i]:
+                            p.append("RGBCMYWK"[j])
                 possibleLogging.append("".join(p))
             print("Possible colours for each position is: " + ";".join(possibleLogging))
         elif len(infoDump[0]) == 6:
@@ -145,6 +149,7 @@ def main() -> None:
                     SolutionArray[i] = colourXor(SolutionArray[i], infoDump[1][i])
                 elif SolutionArray[i] == "-":
                     if infoDump[1][i] == colourXor(ConstantCopy[i], "W"):
+                        Impossibles[i] = list("RGBCMYWK")
                         SolutionArray[i] = colourXor(infoDump[0][i], infoDump[1][i])
                         coloursFound += 1
                     else:
@@ -210,9 +215,12 @@ def main() -> None:
             for i in range(0, len(Impossibles)):
                 Impossibles[i] = list(set(Impossibles[i]))
                 p = []
-                for j in range(0, len("RGBCMYWK")):
-                    if "RGBCMYWK"[j] not in Impossibles[i]:
-                        p.append("RGBCMYWK"[j])
+                if len(Impossibles[i]) == 8:
+                    p.append("-")
+                else:
+                    for j in range(0, len("RGBCMYWK")):
+                        if "RGBCMYWK"[j] not in Impossibles[i]:
+                            p.append("RGBCMYWK"[j])
                 possibleLogging.append("".join(p))
             print("Possible colours for each position is: " + ";".join(possibleLogging))
         elif infoDump[0] == "END":
