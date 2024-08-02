@@ -368,7 +368,7 @@ def main() -> None:
             for j in range(0, 10):
                 unencryptedNumbers[positions[j]] = FINumbers[math.floor(j / 5)][j % 5]
         elif methods[i] == "AND":
-            names = ["AND", "OR", "XOR", "NAND", "NOR", "XNOR", "R_ARR", "L_ARR", "NOT"]
+            names = ["AND", "OR", "XOR", "NAND", "NOR", "XNOR", "IMP", "IMPBY", "NOT"]
             print("Possible names for gates are: " + ", ".join(names))
             sequence = input("Input the sequence of 12 logic gates: ").upper().split(" ")
             Not = [15, 14, 13, 12, 11, 10, 9, 8, 7, 6]
@@ -419,7 +419,7 @@ def main() -> None:
                         for k in range(0, 4):
                             resultNum += int(result[k]) * (2 ** (3 - k))
                         unencryptedNumbers[j] = resultNum
-                    elif sequence[j] == "R_ARR":
+                    elif sequence[j] == "IMP":
                         for k in range(0, 4):
                             if unenc[k] == "1" and suppl[k] == "0":
                                 result += "0"
@@ -428,7 +428,7 @@ def main() -> None:
                         for k in range(0, 4):
                             resultNum += int(result[k]) * (2 ** (3 - k))
                         unencryptedNumbers[j] = resultNum
-                    elif sequence[j] == "L_ARR":
+                    elif sequence[j] == "IMPBY":
                         for k in range(0, 4):
                             if unenc[k] == "0" and suppl[k] == "1":
                                 result += "0"
