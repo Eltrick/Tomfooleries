@@ -231,6 +231,7 @@ def main() -> None:
                     exit()
         else:
             print("The information input were not valid. Try again.")
+            continue
         
         if not reverting:
             log = "["

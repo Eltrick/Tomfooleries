@@ -34,17 +34,17 @@ def Main() -> None:
     BValues = [0, 0, 0, 0, 0, 0, 0, 0]
     CValues = [0, 0, 0, 0, 0, 0, 0, 0]
 
-    print("Command format: <Boozleglyph_Set> <Encrypted_Display_Text> <Encrypted_Appended_Symbol> <Colour>")
+    print("Command format: <Colour> <Boozleglyph_Set> <Encrypted_Display_Text> <Encrypted_Appended_Symbol>")
     infoDump = ["", "", "", "", "", "", "", ""]
 
     # Get information
     for i in range(0, len(infoDump)):
         infoDump[i] = input("Enter display " + str(i+1) + "'s information: ").upper().split(" ")
-        CValues[i] = PossibleCValues[Alphabet.index(infoDump[i][0])]
+        CValues[i] = PossibleCValues[Alphabet.index(infoDump[i][1])]
     
     # Decrypts texts
     for i in range(0, len(infoDump)):
-        encryptedText = infoDump[i][1]
+        encryptedText = infoDump[i][2]
         possibleDecryptedText = ""
         testBValue = 1
         while(DecryptedTexts[i] not in PossibleTexts):
@@ -66,12 +66,12 @@ def Main() -> None:
 
     # Decrypts appended symbols using found keys
     for i in range(0, len(infoDump)):
-        DecryptedSymbols[i] = ModifiedCaesar(infoDump[i][2], -BValues[i])
+        DecryptedSymbols[i] = ModifiedCaesar(infoDump[i][3], -BValues[i])
     print("Decrypted Symbols are: " + str(DecryptedSymbols))
     
     # Stores colours (pun not intended)
     for i in range(0, len(infoDump)):
-        TextColours[i] = infoDump[i][3]
+        TextColours[i] = infoDump[i][0]
     
     # Gets raw text velues
     for i in range(0, len(DecryptedTexts)):

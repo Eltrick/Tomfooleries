@@ -228,8 +228,8 @@ double = {"PP": ((lambda p, pp, r, x, d, n, a, b: bound(max(single[p][0](x, d, n
                  (lambda p, pp, r, x, d, n, a, b: bound(abs(single[p][1](x, d, n, a, b) - single[pp][1](x, d, n, a, b)))),
                  (lambda p, pp, r, x, d, n, a, b: bound(single[r][2](x, d, n, a, b) + single[r][2](b, d, n, a, b) + single[r][2](a, d, n, a, b)))),
           "PS": ((lambda p, s, x, d, n, a, b: bound(single[p][0](x, d, n, a, b) + single[s][0](x, d, n, a, b) - 2*d)),
-                 (lambda p, s, x, d, n, a, b: bound(4*d - abs(single[p][1](x, d, n, a, b) - single[s][1](x, d, n, a, b)))),
-                 (lambda p, s, x, d, n, a, b: bound(min(single[p][2](x, d, n, a, b), single[s][2](x, d, n, a, b), -abs(single[p][2](x, d, n, a, b) - single[s][2](x, d, n, a, b)))))),
+                 (lambda p, s, x, d, n, a, b: bound(4*d - bound(abs(single[p][1](x, d, n, a, b) - single[s][1](x, d, n, a, b))))),
+                 (lambda p, s, x, d, n, a, b: bound(min(single[p][2](x, d, n, a, b), single[s][2](x, d, n, a, b), -bound(abs(single[p][2](x, d, n, a, b) - single[s][2](x, d, n, a, b))))))),
           "SS": ((lambda s, ss, r, x, d, n, a, b: bound(min(single[s][0](x, d, n, a, b), single[ss][0](x, d, n, a, b)))),
                  (lambda s, ss, r, x, d, n, a, b: bound(max(single[r][1](x, d, n, a, b), single[r][1](x, d, n, a, b)))),
                  (lambda s, ss, r, x, d, n, a, b: bound(single[r][2](x, d, n, a, b) - single[s][2](x, d, n, a, b) - single[ss][2](x, d, n, a, b))))}
