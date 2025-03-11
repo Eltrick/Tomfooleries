@@ -27,6 +27,7 @@ def solve():
         state = iteration[1]
         new_inp = [int(x) for x in input("Input position that changed, and the new value of it: ")]
         state[new_inp[0]] = new_inp[1]
+    print("The module should now be solved.")
 
 if __name__ == "__main__":
     solve()
