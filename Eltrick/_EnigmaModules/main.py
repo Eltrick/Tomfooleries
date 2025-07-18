@@ -32,7 +32,7 @@ def main() -> None:
         rotors.append([infoDump[2].split("|")[0].split(";"), infoDump[2].split("|")[1].split(";")])
     
     for i in range(0, len(rotors)):
-        if infoDump[5][i] == "-":
+        if infoDump[5][len(rotors) - 1 - i] == "-":
             rotors[i][0] = rotors[i][0][::-1].copy()
             rotors[i][1] = rotors[i][1][::-1].copy()
     
