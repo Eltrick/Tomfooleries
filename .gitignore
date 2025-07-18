@@ -7,6 +7,9 @@
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
 CSharp/
+Eltrick/Misc/
+Eltrick/!_JS/
+_NotPython/!_JS/
 
 # User-specific files
 *.rsuser
