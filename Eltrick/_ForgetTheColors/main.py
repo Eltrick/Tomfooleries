@@ -153,7 +153,7 @@ def infoValidator(stageInfo: list) -> bool:
         finalSum = sum(STAGES);
         print("Therefore, the sum of all stages is: " + str(finalSum))
         
-        finalSum = (finalSum / 100000) % 1
+        finalSum = abs(finalSum / 100000) % 1
         
         print("Therefore, the sum of all values are: " + str(finalSum))
         finalAnswer = math.floor(math.acos(finalSum)/math.pi * 180)

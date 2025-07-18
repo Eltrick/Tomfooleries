@@ -194,11 +194,12 @@ def main() -> None:
 
         if i == 0: # Stage 1 calcs
             # Step 17, stage 1
+            stopped = False
             for j in range(0, len(infoDump[i])):
-                if infoDump[i][j][1] in TableRowIndices:
+                if infoDump[i][j][1] in TableRowIndices and not stopped:
                     if ManualOperationsList[TableColumnIndices.index(infoDump[i][j][0])][TableRowIndices.index(infoDump[i][j][1])] == "STOP":
                         print("(" + infoDump[i][j][1] + ", " + infoDump[i][j][0] + ") = STOP, stopping this step.")
-                        continue
+                        stopped = True
                     else:
                         stageValues[i] = PerformOperation(stageValues[i], ManualOperationsList[TableColumnIndices.index(infoDump[i][j][0])][TableRowIndices.index(infoDump[i][j][1])], i)
                         print("(" + infoDump[i][j][1] + ", " + infoDump[i][j][0] + ") = " + ManualOperationsList[TableColumnIndices.index(infoDump[i][j][0])][TableRowIndices.index(infoDump[i][j][1])] + ", performing operation gives: " + str(stageValues[i]))

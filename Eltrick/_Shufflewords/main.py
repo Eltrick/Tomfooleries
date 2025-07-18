@@ -1,50 +1,40 @@
 import time
+from collections import deque
 
-Alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def main() -> None:
-    global Alphabet
-    
     frequencyTable = {}
 
     file = ""
-    entireWordlist = True if input("Entire word list? ").upper() == "Y" else False
-    damoclesLumber = True if input("Module Scramble? ").upper() == "Y" else False
+    entireWordlist = input("Entire word list? ").upper() == "Y"
+    damoclesLumber = input("Module Scramble? ").upper() == "Y"
     if damoclesLumber:
         file = open(r".\ModuleList.txt", 'r')
     elif entireWordlist:
         file = open(r".\vWordlist.txt", 'r')
     else:
         file = open(r".\Wordlist.txt", 'r')
-    fileContent = file.readlines()
-    fileContent = fileContent[0].split(", ")
-
+    fileContent = file.read().strip().split(", ")
     
     lettersNotPresent = []
-    for i in range(0, len(Alphabet)):
-        lettersNotPresent.append(Alphabet[i])
-    
     moduleList = sorted(list(input("Letter string on module: ").upper()))
-    for i in range(0, len(moduleList)):
-        if moduleList[i] in lettersNotPresent:
-            lettersNotPresent.pop(lettersNotPresent.index(moduleList[i]))
+    for i in range(len(Alphabet)):
+        if Alphabet[i] not in moduleList:
+            lettersNotPresent.append(Alphabet[i])
     
     for i in range(len(fileContent) - 1, -1, -1):
-        nonexistentLetter = False
-        for j in range(0, len(fileContent[i])):
-            if fileContent[i][j] in lettersNotPresent:
-                nonexistentLetter = True
-        if nonexistentLetter:
+        if any([fileContent[i][j] in lettersNotPresent for j in range(len(fileContent[i]))]):
             fileContent.pop(i)
     
     for i in range(0, len(Alphabet)):
         frequencyTable[Alphabet[i]] = moduleList.count(Alphabet[i])
     
     length = 0
-    queue = [[]]
+    queue = deque([[]])
     timeStart = time.time()
     while len(queue) != 0:
-        current = queue.pop(0)
+        current = queue.popleft()
         if len(current) > length:
             length = len(current)
             timeIntermediate = time.time()

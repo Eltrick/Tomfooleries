@@ -49,11 +49,11 @@ def Main() -> None:
         testBValue = 1
         while(DecryptedTexts[i] not in PossibleTexts):
             possibleDecryptedText = ModifiedCaesar(encryptedText, -testBValue)
+            if testBValue > 26:
+                print("Something went horribly wrong with Display Text #" + str(i + 1) + ". Please check that you have everything correctly.")
+                exit()
             for j in range(0, len(possibleDecryptedText)):
                 if ShiftText(possibleDecryptedText, -j) in PossibleTexts:
-                    if testBValue > 26:
-                        print("Something went horribly wrong with Display Text #" + str(i + 1) + ". Please check that you have everything correctly.")
-                        exit()
                     AValues[i] = j
                     BValues[i] = testBValue
                     DecryptedTexts[i] = ShiftText(possibleDecryptedText, -j)

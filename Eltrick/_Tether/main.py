@@ -29,7 +29,9 @@ def DFS(wordsInChain: list, finalWord: str, initialTime) -> None:
         return
     if lastThreeCharacters == finalWord[:3]:
         print("Elapsed time: " + str(time.time() - initialTime))
-        print(", ".join(wordsInChain) + ", " + finalWord)
+        print(", ".join(wordsInChain + [finalWord]))
+    # else:
+    #     print("Broken: " + ", ".join(wordsInChain))
 
 if __name__ == "__main__":
     main()

@@ -1,5 +1,13 @@
 import math
 
+FLUT = {
+    "R": "Re",
+    "O": "Or",
+    "G": "Gr",
+    "B": "Bl",
+    "P": "Pu"
+}
+
 MonitorColours = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
 MonitorTexts = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]
 MonitorDisplays = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -164,6 +172,15 @@ def main() -> None:
                 Values[i] += WireValues[j][Orders.index(MonitorConnections[i][j])] * WireOccurences[Orders.index(MonitorConnections[i][j])]
     print("Final Values for each monitor: " + str(Values))
     
+    MonitorsToBePressed = []
+    for i in range(len(Values)):
+        if Values[i] > -1:
+            MonitorsToBePressed.append([str(i + 1), str(Values[i]), FLUT[MonitorColours[i]] + ("Ev" if Values[i] % 2 == 0 else "Od")])
+    
+    print("Valid monitors are: " + " ".join([x[0] for x in MonitorsToBePressed]))
+    print("with scores: " + " ".join([x[1] for x in MonitorsToBePressed]))
+    print("and keys: " + " ".join([x[2] for x in MonitorsToBePressed]))
+    
     funnyCase = True if (input("Are any of the monitors green? (Y/N): ").upper() == "Y") else False
     while funnyCase:
         print("Command Format: <MonitorPosition> <NewMonitorNumber>")
@@ -289,6 +306,15 @@ def main() -> None:
                 if MonitorConnections[i][j] != "-":
                     Values[i] += WireValues[j][Orders.index(MonitorConnections[i][j])] * WireOccurences[Orders.index(MonitorConnections[i][j])]
         print("Final Values for each monitor: " + str(Values))
+        
+        MonitorsToBePressed = []
+        for i in range(len(Values)):
+            if Values[i] > -1:
+                MonitorsToBePressed.append([str(i + 1), str(Values[i]), FLUT[MonitorColours[i]] + ("Ev" if Values[i] % 2 == 0 else "Od")])
+        
+        print("Valid monitors are: " + " ".join([x[0] for x in MonitorsToBePressed]))
+        print("with scores: " + " ".join([x[1] for x in MonitorsToBePressed]))
+        print("and keys: " + " ".join([x[2] for x in MonitorsToBePressed]))
     print("The module should now solve, and that is the end. Goodbye - L.V.")
     exit()
 
