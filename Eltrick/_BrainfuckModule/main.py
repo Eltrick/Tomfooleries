@@ -37,7 +37,8 @@ def Command(commands: str) -> None:
     global batteryCount
     loopstart = 0
     looptimes = 0
-    for i in range(0, len(commands)):
+    i = 0
+    while i < len(commands):
         if commands[i] == ">":
             pointer += 1
             if len(dataTape) >= pointer:
@@ -67,12 +68,12 @@ def Command(commands: str) -> None:
             cellToConsider %= 6
             dataTape[pointer] = serialNumber[cellToConsider]
         elif commands[i] == "[":
-            loopstart = i
+            loopstart = i + 1
             looptimes = 0
             print("Start of loop.")
         elif commands[i] == "]":
             looptimes += 1
-            if dataTape[pointer] == 0 or looptimes == batteryCount:
+            if dataTape[pointer] == 0 or looptimes == batteryCount + 1:
                 print("End of loop.")
             else:
                 i = loopstart
@@ -80,6 +81,7 @@ def Command(commands: str) -> None:
         elif commands[i] == ".":
             print("Current Answer: " + str(dataTape[pointer]))
         print(str(commands[i]) + " : " + str(dataTape) + " ; pointer (0-indexed): " + str(pointer))
+        i += 1
 
 if __name__ == "__main__":
     main()

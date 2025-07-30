@@ -200,6 +200,15 @@ def main() -> None:
                 else: # This should never be reached
                     print("This line should not have been reached, exiting")
                     exit()
+        elif len(displays) == 5:
+            function = displays[3]
+            for x in range(0, 3):
+                if "-" in displays[x]: # Two characters, meaning there must be a negative sign
+                    CHANNELS[x] = abs(int(displays[x]))
+                    isInverted[x] = True
+                else: # One character, meaning normal value
+                    CHANNELS[x] = abs(int(displays[x]))
+                    isInverted[x] = False
         else:
             print("The information input were not valid. Starting over.")
             

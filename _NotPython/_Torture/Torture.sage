@@ -52,3 +52,6 @@ def Trial(A, V, trial):
 
 Trial(A, V, 0)
 
+while True:
+    u_inp = vector(Integers(modulus), [(modulus - int(x)) % modulus for x in list(input("Another state: "))])
+    Trial(A, u_inp, 0)
