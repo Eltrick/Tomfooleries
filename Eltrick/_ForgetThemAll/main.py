@@ -1,4 +1,4 @@
-Colours = ["Y", "X", "B", "G", "O", "R", "L", "C", "N", "W", "P", "M", "I"]
+Colours = ["Y", "A", "B", "G", "O", "R", "L", "C", "N", "W", "P", "M", "I"]
 Keywords = [["WIRE"], ["BUTTON", "KEY"], ["MAZE"], ["SIMON"], ["MORSE"], ["CRUEL", "COMPLICATED", "BROKEN", "CURSED", "FAULTY"], ["MATH", "NUMBER", "DIGIT", "EQUATION", "LOGIC"], ["WORD", "LETTER", "PHRASE", "TEXT", "TALK", "ALPHABET"], ["CODE", "CIPHER"], ["LIGHT", "LED"], ["SQUARE", "CIRCLE", "TRIANGLE", "CUBE", "SPHERE"], ["COLOR", "COLOUR"], ["MELODY", "HARMONY", "CHORD", "PIANO"]]
 Keys = [["A", "N", "0"], ["B", "O", "1"], ["C", "P", "2"], ["D", "Q", "3"], ["E", "R", "4"], ["F", "S", "5"], ["G", "T", "6"], ["H", "U", "7"], ["I", "V", "8"], ["J", "W", "9"], ["K", "X"], ["L", "Y"], ["M", "Z"]]
 
@@ -56,12 +56,23 @@ def main() -> None:
                 if Keywords[i][j] in moduleName != -1:
                     faulty[i] = True
         
+        faultyLog = ""
+        for i in range(len(faulty)):
+            if faulty[i]:
+                faultyLog += Colours[i]
+        print("Faulty: " + faultyLog)
+        
         for i in range(len(onNess)):
             onNess[i] ^= faulty[i]
         
+        onLog = ""
+        
         for i in range(len(onNess)):
             if onNess[i]:
+                onLog += Colours[i]
                 Counts[i] += 1
+        
+        print("Post-Inversion: " + onLog)
         
         stage += 1
     
