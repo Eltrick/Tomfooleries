@@ -231,7 +231,7 @@ double = {"PP": ((lambda p, pp, r, x, d, n, a, b: bound(max(single[p][0](x, d, n
                  (lambda p, s, x, d, n, a, b: bound(4*d - bound(abs(single[p][1](x, d, n, a, b) - single[s][1](x, d, n, a, b))))),
                  (lambda p, s, x, d, n, a, b: bound(min(single[p][2](x, d, n, a, b), single[s][2](x, d, n, a, b), -bound(abs(single[p][2](x, d, n, a, b) - single[s][2](x, d, n, a, b))))))),
           "SS": ((lambda s, ss, r, x, d, n, a, b: bound(min(single[s][0](x, d, n, a, b), single[ss][0](x, d, n, a, b)))),
-                 (lambda s, ss, r, x, d, n, a, b: bound(max(single[r][1](x, d, n, a, b), single[r][1](x, d, n, a, b)))),
+                 (lambda s, ss, r, x, d, n, a, b: bound(max(single[r][1](x, d, n, a, b), single[r][1](a, d, n, a, b)))),
                  (lambda s, ss, r, x, d, n, a, b: bound(single[r][2](x, d, n, a, b) - single[s][2](x, d, n, a, b) - single[ss][2](x, d, n, a, b))))}
 
 triple = {"PPP": ((lambda p, pp, ppp, x, d, n, a, b: bound(x + v[0])),
