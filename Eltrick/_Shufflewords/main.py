@@ -1,7 +1,7 @@
 import time
 from collections import deque
 
-Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+Alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ'.-/"
 
 def main() -> None:
     frequencyTable = {}
