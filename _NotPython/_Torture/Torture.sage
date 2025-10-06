@@ -5,10 +5,12 @@ if "," in states[0]:
     for i in range(0, len(states)):
         states[i] = states[i].split(",")
         for j in range(0, len(states[i])):
-            states[i][j] = int(states[i][j])
+            states[i][j] = states[i - 1][j] if states[i][j] == "-" else int(states[i][j])
 else:
     for i in range(0, len(states)):
-        states[i] = [int(x) for x in states[i]]
+        states[i] = list(states[i])
+        for j in range(0, len(states[i])):
+            states[i][j] = states[i - 1][j] if states[i][j] == "-" else int(states[i][j])
 
 differences = []
 for i in range(0, len(states[0])):
@@ -20,7 +22,6 @@ for i in range(0, len(states[0])):
 for i in range(0, len(differences)):
     for j in range(0, len(differences[i])):
         differences[i][j] = (states[i + 1][j] - states[i][j]) % modulus
-
 
 finals = []
 for i in range(0, len(states[0])):
