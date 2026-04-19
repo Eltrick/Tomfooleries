@@ -1,3 +1,4 @@
+raw = input("Raw?: ").upper() == "Y"
 modulus = int(input("Modulus: "))
 states = input("All N+1 states, ;: ").split(";")
 
@@ -21,7 +22,10 @@ for i in range(0, len(states[0])):
 
 for i in range(0, len(differences)):
     for j in range(0, len(differences[i])):
-        differences[i][j] = (states[i + 1][j] - states[i][j]) % modulus
+        if raw:
+            differences[i][j] = states[i][j]
+        else:
+            differences[i][j] = (states[i + 1][j] - states[i][j]) % modulus
 
 finals = []
 for i in range(0, len(states[0])):

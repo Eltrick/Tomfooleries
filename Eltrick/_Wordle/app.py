@@ -13,8 +13,8 @@ Session(app)
 
 helpstring = "Enter your guess and the feedback info into this tool. Enter guesses sequentially. This tool does" \
              " not yet handle \"hard mode\".\n"
-wmap = {"default":"Wordle (default)", "full":"Wordle (expanded)", "scrabble":"Scrabble"}
-modes_to_wmap = {"Wordle (default)":"default", "Wordle (expanded)":"full", "Scrabble":"scrabble"}
+wmap = {"default":"Wordle (default)", "full":"Wordle (expanded)", "scrabble":"Scrabble", "lingo":"Encryption Lingo"}
+modes_to_wmap = {"Wordle (default)":"default", "Wordle (expanded)":"full", "Scrabble":"scrabble", "Encryption Lingo":"lingo"}
 
 
 def initialize(mode="default", k=5):
@@ -26,6 +26,10 @@ def initialize(mode="default", k=5):
         init_cbw = "CRATE"
         init_to_check = read_words(k, "resources/fangames.txt")
         init_poss_words = read_words(k, "resources/fangames.txt")
+    elif mode == "lingo":
+        init_cbw = "CRATE"
+        init_to_check = read_words(k, "resources/lingo.txt")
+        init_poss_words = read_words(k, "resources/lingo.txt")
     else:
         init_cbw = "CRATE"
         init_to_check = read_words(k, "resources/full_set.txt")

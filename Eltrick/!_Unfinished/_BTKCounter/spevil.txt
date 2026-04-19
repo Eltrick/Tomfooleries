@@ -1,0 +1,39 @@
+14
+Affine Cycle
+ASCII Maze
+Bamboozled Again
+Bamboozling Button
+Bamboozling Button Grid
+Bamboozling Time Keeper
+Bordered Keys
+Caesar Cycle
+Cruel Match 'em
+Cryptic Cycle
+Disordered Keys
+Double Arrows
+Faulty RGB Maze
+Forget Me Later
+Hill Cycle
+Jumble Cycle
+Lights On
+Match 'em
+Misordered Keys
+Multitask
+Ordered Keys
+Pigpen Cycle
+Playfair Cycle
+Recorded Keys
+Reordered Keys
+RGB Arithmetic
+RGB Maze
+RGB Logic
+Rune Match I
+Rune Match II
+Rune Match III
+Simon Stores
+Silhouettes
+Tallordered Keys
+Ultimate Cycle
+UltraStores
+Unordered Keys
+The Very Annoying Button
